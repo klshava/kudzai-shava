@@ -1,0 +1,47 @@
+
+
+	html {
+		margin: 0px;
+		height: 100%;
+		width: 100%;
+	 }
+	 
+	 body {
+		margin: 0px;
+		min-height: 100%;
+		width: 100%;
+	 }
+
+
+	.my-container {
+	height: 100%;
+		width: 100%;	
+	}
+
+	
+	.my-row1 {
+		height: 5%;
+		width: 100%;
+	}
+	
+	.my-row2{
+		height: 90%;
+		width: 100%;
+	}
+
+	.my-row3{
+		height: 5%;
+		width: 100%;
+
+	}
+
+	.my-col1{
+		height: 90%;
+		width: 20%;
+	}
+
+	.my-col2{
+		height: 90%;
+		width: 80%;
+	}
+
