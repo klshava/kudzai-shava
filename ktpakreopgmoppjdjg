@@ -1,0 +1,138 @@
+[33mcommit 932f02c792740dc47f96c6e4e66e4495961899e0[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: klshava <1404952@students.wit.ac.za>
+Date:   Sat Oct 3 18:01:04 2020 +0200
+
+    analtyics
+
+[33mcommit 501eb428e04cf54f3bac22c77d79a6fae7340304[m
+Author: klshava <1404952@students.wit.ac.za>
+Date:   Sat Oct 3 17:45:45 2020 +0200
+
+    hackathon
+
+[33mcommit 1ed4518ac92e969a572fcb8c69aa32c57952407e[m
+Author: klshava <1404952@students.wit.ac.za>
+Date:   Sat Oct 3 17:41:30 2020 +0200
+
+    October CV
+
+[33mcommit 24d8ce5a315acbab74f7bc7c0d4f9b7429bda148[m
+Author: klshava <1404952@students.wit.ac.za>
+Date:   Sat Oct 3 16:11:58 2020 +0200
+
+    cloudfront2
+
+[33mcommit 84b323af9195c07d5017eea3f8a4b134b63cdfb3[m
+Author: klshava <1404952@students.wit.ac.za>
+Date:   Sat Oct 3 16:11:48 2020 +0200
+
+    cloudfront
+
+[33mcommit b4000cfe24f4ce2c5c044cb8e6128858255482f5[m
+Author: klshava <1404952@students.wit.ac.za>
+Date:   Thu Oct 1 06:21:28 2020 +0200
+
+    Reduction in pages
+
+[33mcommit 4752533784202709963085f27d9c48f1d793162f[m
+Author: klshava <1404952@students.wit.ac.za>
+Date:   Tue Sep 15 12:53:18 2020 +0200
+
+    Corrected spelling error
+
+[33mcommit b3cc40928e7e066ac9bf2ded4a480eadbc8ebea1[m
+Author: klshava <1404952@students.wit.ac.za>
+Date:   Tue Sep 15 12:14:02 2020 +0200
+
+    Updated CV
+
+[33mcommit a9bec0444ffaf62bec74cc5772cd65ad9070363a[m
+Author: klshava <1404952@students.wit.ac.za>
+Date:   Thu Sep 10 23:09:31 2020 +0200
+
+    Updated CV
+
+[33mcommit 7b50acf86358f69b9b38a21c6165b0708620d5b7[m
+Author: klshava <1404952@students.wit.ac.za>
+Date:   Thu Sep 10 23:04:15 2020 +0200
+
+    photo hobby
+
+[33mcommit b1c9df9cd840cbe71c8abcb242b0bc1a532d0d26[m
+Author: klshava <1404952@students.wit.ac.za>
+Date:   Sat Sep 5 17:05:40 2020 +0200
+
+    A revamp
+
+[33mcommit ede3f5e1a78d3b35c1d7384e387b590ac24906f2[m
+Author: klshava <1404952@students.wit.ac.za>
+Date:   Thu Jul 30 12:37:23 2020 +0200
+
+    Added tutorial page
+
+[33mcommit a33b9049f5e46298c4400e0f54627a6bc7f02b16[m
+Author: klshava <1404952@students.wit.ac.za>
+Date:   Thu Jul 30 12:29:59 2020 +0200
+
+    ATS
+
+[33mcommit 73b1f7e2c00a1e74632733bdd79174ac01c09ba0[m
+Author: klshava <1404952@students.wit.ac.za>
+Date:   Sat Jul 25 16:44:22 2020 +0200
+
+    Surveillance
+
+[33mcommit 205457404114fc01c054965f71c0ee4d9472a45e[m
+Author: klshava <1404952@students.wit.ac.za>
+Date:   Fri Jul 24 12:28:24 2020 +0200
+
+    added contact page
+
+[33mcommit e0210ef2c79a26ee422c2cd2d3a5e078408fab13[m
+Merge: 0fe63ec 476b5bb
+Author: Kudzai <1404952@students.wits.ac.za>
+Date:   Thu Jul 23 11:37:40 2020 +0200
+
+    Merge branch 'master' of https://github.com/klshava/kudzai-shava
+
+[33mcommit 0fe63ecf8e16e96dbb357c257dba223653b0ad03[m
+Author: Kudzai <1404952@students.wits.ac.za>
+Date:   Thu Jul 23 11:35:18 2020 +0200
+
+    23 July Update
+
+[33mcommit 476b5bbf295489b8fef452b11f95c77f1d034977[m
+Author: Kudzai Lawrence Shava <41476928+klshava@users.noreply.github.com>
+Date:   Thu Jul 16 18:06:28 2020 +0200
+
+    Updated README
+
+[33mcommit 6eeccf1b0b536cd8315b681e08ebc60f54ee3359[m
+Author: Kudzai Lawrence Shava <41476928+klshava@users.noreply.github.com>
+Date:   Thu Jul 16 18:05:53 2020 +0200
+
+    Set theme jekyll-theme-tactile
+
+[33mcommit 65aa23bf2daa29f01ef7964f01f2def981a868c1[m
+Author: Kudzai Lawrence Shava <41476928+klshava@users.noreply.github.com>
+Date:   Thu Jul 16 18:02:52 2020 +0200
+
+    Delete CNAME
+
+[33mcommit 1db0c3c4124ee4f3470601ebee84a1e32d2b9609[m
+Author: Kudzai Lawrence Shava <41476928+klshava@users.noreply.github.com>
+Date:   Thu Jul 16 18:01:07 2020 +0200
+
+    Create CNAME
+
+[33mcommit ecc2cc182663e7b74322c9de9dca32d9ead1c1db[m
+Author: Kudzai <1404952@students.wits.ac.za>
+Date:   Thu Jul 16 17:49:01 2020 +0200
+
+    initial commit
+
+[33mcommit 9782d98643a901deb49e69330c18b4c93ccbae96[m
+Author: Kudzai Lawrence Shava <41476928+klshava@users.noreply.github.com>
+Date:   Thu Jul 16 17:41:45 2020 +0200
+
+    Initial commit
