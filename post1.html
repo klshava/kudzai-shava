@@ -42,20 +42,1522 @@
 </div>	
 
 <div>
-<p>
-The COVID-19 pandemic has brought about drastic changes in people’s way of life, all over the
-world. As a precautionary measure to cub the spread of this highly contagious coronavirus, world
-governments have decided to turn to cell phone tracking. Although this approach provides
-solutions such as contact tracing and quarantine enforcement, it also raises consequential
-concerns about human rights. Cellphone tracking is one of the systems that fall into what
-<a href="https://en.wikipedia.org/wiki/Shoshana_Zuboff" target="_blank">Shoshana Zuboff</a> describes as <a href="https://en.wikipedia.org/wiki/Surveillance_capitalism" target="blank">Surveillance Capitalism</a>. Cellphone tracking is a data driven
-technological solution that has potential to give away more detail than the user had intended to
-disclose. In this age of social and economic power-hungry technology platforms and no law
-obstructing the commodifying and trade of personal data, this technological solution by
-governments is highly questionable and posing risks to people’s privacy and more frightening, to
-democracy.
-</p>
-<p>
+<p>13/04/2023, 05:22 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763141/View 1/1
+ Previous Next 
+Welcome to Module 3
+In this module we begin by taking a look at how the hardware and protocols interact to move
+data from where it is stored to the device that is requesting it, potentially traversing multiple
+networks. In particular, we will look at how the Network Layer protocols provide addressing,
+deliver data, and notify us when there’s been a delivery failure. We’ll also examine the need for,
+and challenges to, the transition from IPv4 to IPv6. Finally, we’ll investigating different methods of
+routing, to ensure that data is delivered as efficiently as possible.
+Learning Goals
+Upon completing this module, you can:
+Understand the need for multiple addresses and how hosts obtain and use
+addresses;
+Understand how data is delivered in the Internet from one host to another;
+and
+Understand how paths can be determined between any two locations in the
+Internet.
+13/04/2023, 05:23 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763142/View 1/3
+Internetworking and The Internet
+In our earlier studies we learned how devices can be connected to networks of different types,
+including wired LANs, wireless LANs, WANs, and PANs. Connection to a computer network
+provides devices with some limited benefits, including allowing resources such as printers to be
+shared and files to be copied between devices.
+We can increase the benefits by extending the connectivity by interconnecting networks, enabling
+cheap and simple access to resources located all around the world, which in turn enables
+significant new capabilities. This week we examine the functionality of the Network Layer (TCP/IP
+Internet Layer), which provides us with the necessary functionality for the interconnection of
+networks and the exchange of data across them, known as internetworking.
+Starting at Home
+Most people are familiar with wireless communication and recognize the convenience it provides,
+allowing you to check your bank balance or sport scores when at home or shopping, or even
+allowing you to call for aid when you are not easily reached such as on a boat or hiking in a forest.
+At home, you most likely make use of a Wi-Fi network for connectivity, or perhaps Ethernet, which
+moves your data to a router located somewhere in the house.
+Wired connections from this router to the local point of presence of your ISP or a shared point of
+presence (such as the NBN), often the local telephone exchange in Australia or the equivalent in
+other countries sometimes referred to as a central office. Wireless communication, such as 4G or
+5G, will have a transmission antenna that is connected to the similar points of presence.
+Building the Internet
+How these points of presence are then connected to the Internet is often either misunderstood or
+a complete mystery for most people, which is unsurprising given the complexity of the problem.
+Consider how many ISPs there are around the world, each connecting many consumers. How
+many points of presence do you know of in your nearest town? Nearest metropolitan city? In your
+state? In your country? And so on. Determining how to get around this massively complex
+network is the job of Layer 3.
+The primary problem solved by Layer 3 is determining what path a packet should take through
+the various interconnected networks, known as routing. The larger and more complex the
+internetwork becomes, the more likely alternative paths can exist for the packet to travel,
+increasing the complexity of the problem. To help manage the complexity, the interconnection of
+networks typically follows a hierarchical structure, beginning at major exchange points (Internet
+13/04/2023, 05:23 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763142/View 2/3
+Exchange Points), which lead to provider networks (national or regional ISPs), in turn leading to
+customer networks.
+Internet Exchange Points (IXPs) fundamentally represent shared locations or premises to which
+multiple providers connect their networks. These provider networks are then interconnected,
+often using common LAN technologies such as Ethernet. To enable data exchange, providers
+then establish peering arrangements with each other. Simplistically, these are agreements to allow
+traffic from one network to travel to another providers network, or transit through (pass through)
+another providers network (a “peer” network) to reach another destination. Peering arrangements
+may or mat not involve payment.
+The use of Internet Exchange Points provides the physical connectivity, however we still need to
+determine the actual path of traffic, which could be affected by temporary outages or temporary
+congestions that may occur in the network. For this purpose, the Border Gateway Protocol (BGP)
+is responsible for learning which networks can be reached through each provider network. It is a
+dynamic routing protocol which determines paths through the interconnected networks to reach
+other Autonomous Systems (ASs), representing a collection of one or more interconnected
+TCP/IP networks (subnets) using a single and clearly defined routing policy. That is, they are
+managed consistently or as one larger network. Packets are then forwarded according to the
+pathways learned through the BGP protocol.
+The following videos provide some insight into how the Internet is constructed. In the first video,
+Euro-IX addresses the role of Internet Exchange Points where data is exchanged between
+multiple providers and consumers of network data:
+In the second video, Motherboard address how submarine cables are used to transport Internet
+data around the world:
+The Euro-IX video (HD)
+13/04/2023, 05:23 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763142/View 3/3
+ Previous Next 
+Lastly, if you found it a bit odd that a physical cable was being used and sent under the ocean,
+you might be surprised to learn that these cables (“submarine cables”) are used throughout the
+world to provide connectivity. To understand just how common they are, consider this map of un‐
+derwater cables maintained by TeleGeography.
+Inside the Beach House Connecting the World’s Internet
+Reflect
+Consider planning a holiday from your home to some rural town in a European
+country. As an environmentally conscious traveller you do not wish to use any
+private vehicles and will avoid single passenger vehicles (such as a taxi)
+wherever possible. What are the major travel steps in your trip? What
+alternatives are available for those travel steps? Which of those alternatives
+would you choose? What factors were the most important in making those
+decisions? If you were instead travelling for a family emergency, and the
+environment and money were not concerns, how would your path and relevant
+factors change?
+Note: If you happen to live in Europe then make sure you consider this problem for
+travelling to a rural town in another European country.
+13/04/2023, 05:23 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763143/View 1/3
+Network Layer Concepts
+To understand the functionality of the OSI Network Layer, equivalent to the TCP/IP Internet layer, it
+is important to understand the functionality provided by the lower layers - the underlying Physical
+and Data Link layers (Link Layer in TCP/IP). These lower layers provide us with the ability to
+deliver data to a destination connected to the same network as the originating device, referred to
+as the local network. The Network Layer builds on this functionality by recognising that if a device
+were connected multiple networks at the same time, then it would be possible for that device to
+relay data between those networks, allowing data to travel from one network to the other. These
+other networks are referred to as a remote networks. Applying this concept repeatedly, connecting
+to and relaying data from one network to another, to another, and so on, is fundamentally the
+focus of the Network layer and what allows networks such as the Internet to be constructed.
+The OSI Standard includes quite a long definition of purpose for the Network Layer, however the
+following extracted points are most relevant:
+The key points made in these statements are:
+1. the network layer provides for delivery between transport entities, i.e., the transport layer
+protocols
+2. the transport entities do not need to consider routing and relaying (how to get there)
+3. the transport layer will not need to be aware of the layers below the network layer such as the
+data-link layer (the network layer provides services independent of actual networks).
+To achieve these services, we require three functions: addressing, routing, and forwarding.
+The Network Layer provides the functional and procedural means for
+connectionless-mode or connection-mode transmission among transport-entities
+and, therefore, provides to the transport-entities independence of routing and
+relay questions.
+“
+”
+It makes invisible to transport-entities how underlying resources such as data-link
+connections are used to provide network-connections.
+“
+”
+13/04/2023, 05:23 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763143/View 2/3
+Addressing
+We have already seen addressing at Layer 2, however the only requirement for addressing was
+that any address provided a unique identification of the destination device. At Layer 3 however,
+the addressing requirement extends to also identify which network the device is connected to. For
+this purpose, a hierarchical addressing structure is usually employed.
+To understand hierarchical addressing, consider the following postal address:
+Hierarchical address sample
+Reading this postal address from the bottom up, we can see that the destination is progressively
+narrowed down until the actual delivery location has been identified. Starting from anywhere in the
+world, a letter addressed to the Prime Minister of Australia must first be sent to Australia, then
+forwarded to the Australian Capital Territory (ACT), the city of Canberra, to the Parliament House,
+and finally to the office of the Prime Minister.
+Routing
+The routing function is responsible for determining the path for data through the various networks
+to travel from the sending device to the receiving device. Each device maintains its own separate
+routing information, however for delivery to be successful all devices involved must agree on the
+same pathway. The complexity of this routing information varies depending on the context. It
+could be simple, such as a computer or laptop with only a single network connection configured
+by the owner, or could be much more complex such as a router forming part of the Internet’s
+backbone, which will often need to learn the paths to many networks with the assistance of
+special protocols and algorithms (dynamic routing).
+Forwarding
+Finally, the forwarding function provides the mechanism required to relay data from one network
+to the next, and then the next, along the path identified by routing. A process known as storeand-forward is usually employed for this purpose. This is a very simple mechanism where the
+arriving network protocol data unit is received in its entirety into a memory buffer (store). Routing
+information is then checked to identify the outgoing network and next device in the path (next
+hop) for the destination address, and finally the network protocol data unit is then sent on the
+outgoing network to the identified next hop (forward).
+13/04/2023, 05:23 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763143/View 3/3
+ Previous Next 
+Reflect
+Like many problems in computer networks, the task of routing also has
+applications in real life. Watch the following two short videos on the operations of
+the UPS company (a US based courier) and focus on how they use a very similar
+routing concept:
+Video on UPS Parcel Routing
+Video on UPS Truck Routing
+What are some of the objectives they have in routing? Do you think there are any
+similarities between the routing problems they face and routing in computer
+networks? Can you think of any other examples of where routing is used or
+could be beneficial?
+References
+International Organization for Standardization, Information technology - Open Systems Interconnection - Basic
+Reference Model: The Basic Model, ISO/IEC 7498-1, Second Edition, 1994.
+13/04/2023, 05:24 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763144/View 1/4
+Internet Protocol v4
+IP enables data to be delivered to any device on the TCP/IP network.
+The primary Layer 3 protocol used by the Internet is known as the Internet Protocol and is
+currently in its fourth version. This protocol is commonly referred to as IPv4, or just IP.
+Two versions of the Internet Protocol (IP) exist, version 4 and version 6. IPv4 was the first version
+of IP released in 1981 (RFC791), but was not deployed into the fledgling Internet (known as
+ARPANET) until 1983 on what is referred to as flag day. IPv6 was developed and released as a
+draft standard in 1998 (RFC2460), designed to address some of the shortcomings of IPv4, which
+we address in a later article. Other version numbers have existed but are not used, e.g., versions
+1-3 refer to the early development of IP, and version 5 refers to the Internet Stream Protocol
+(RFC1190) which was never adopted as standard.
+Delivering datagrams
+IP provides the ability to deliver a datagram from a sending device to a destination device, which
+could be located anywhere on the TCP/IP network. Although IP defines the term datagram for the
+data unit it delivers, this term is often confused with the User Datagram Protocol (UDP, a transport
+layer protocol), and the term packet is often used colloquially in its place.
+The delivery service provided by IP is referred to as a best effort service. The term “best effort”
+may initially suggest that the protocol is taking actions to improve the delivery of packets,
+however IP effectively provides no improvements over the underlying data link services. As such,
+IP packets can suffer many problems including data reordering, corruption, loss, duplication, and
+so on.
+The services that are provided by IPv4 can be identified by reviewing the fields that appear in its
+header:
+13/04/2023, 05:24 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763144/View 2/4
+IPv4 Header
+Most apparent are the source and destination addresses, required for IP to deliver datagrams to
+the intended destination device and provide an indication of where the data was originally sent
+from.
+IHL and Total Length
+Through the Internet Header Length (IHL) and Total Length fields, IP ensures that the data
+delivered at the destination is of the same length it was sent, with Total Length indicating the
+overall length of the datagram and IHL identify the length of the header, required due to the
+possibility of optional fields. Together these fields identify the end and start of the payload,
+respectively, and is required because the underlying data-link layers on the path from source to
+destination may increase the length of the datagram.
+Fragmentation
+IP also includes a service to divide the payload of a datagram into two or more smaller datagrams
+through the Identification, Flags, and Fragment Offset field. This mechanism is required due to the
+possibility that underlying data-link layers often impose a maximum size, such as Ethernet which
+only allows 1500 bytes to be carried in a frame. The fragments are reassembled into the original
+datagram at the destination.
+Time to live
+The Time to Live (TTL) field specifies the length of time, in seconds, that a datagram can remain
+on the network for. Routers in the path are required to reduce the TTL field by a value of at least
+13/04/2023, 05:24 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763144/View 3/4
+one, but may reduce the field by more than one if the packet is delayed for any reason. Upon
+reaching a zero value, the datagram is discarded and a message is usually returned indicating its
+loss (using ICMP, covered in an upcoming article).
+Protocol
+The protocol field then identifies which protocol is being carried in the IP datagram, such as TCP,
+UDP, or ICMP. Having the protocol specified in this manner allows IP to carry more than one
+protocol, known as multiplexing, which is then used to distribute the payloads to their relevant
+protocols at the destination, known as demultiplexing.
+Quality of service
+Finally, the Diff Service and ECN fields are used to indicate how an IP packet should be
+processed by routers by using Differentiated Services Codepoints (DSCP marking), used to provide
+Quality of Service (QoS) features such as Expedited Forwarding which indicates a request for
+minimising delay (time spent in queues), jitter (variation in delay), and loss (discarding of
+datagrams), and is used for traffic such as voice and video which are sensitive to these
+characteristics.
+The rest
+The remaining headers are as follows:
+Version - specifies which version of IP is being used (v4 in this case);
+Header Checksum - validates that there has been no corruption of data in the header only (the
+payload is not checked), where any packets failing the checksum are discarded; and
+Options and Padding - allows for additional header fields and services to be provided, although
+these are mostly deprecated and rarely used today (padding is added as required to ensure the
+header remains a multiple of 32-bits which is the measure of the IHL field).
+Reflect
+Consider that IP can divide a large datagram into smaller datagrams (fragments)
+when a data-link layer with a shorter length limit is encountered in the path.
+These smaller datagrams are only provided with the same best-effort service of
+course, which means they could be lost in transit. Do you think that it would be
+more or less likely for the datagram to arrive at its destination? What would
+happen if any one of these fragments were lost?
+13/04/2023, 05:24 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763144/View 4/4
+ Previous Next 
+References
+CIP Working Group, Experimental Internet Stream Protocol, Version 2 (ST-II), RFC1190, 1990 (Available from
+https://tools.ietf.org/html/rfc1190)
+Deering, S., and Hinden, R., Internet Protocol, Version 6 (IPv6): Specification, RFC2460, 1995 (Available from
+https://tools.ietf.org/html/rfc2460)
+Information Sciences Institute, Internet Protocol: DARPA Internet Program Protocol Specification, RFC791,
+1981 (Available from https://tools.ietf.org/html/rfc791)
+13/04/2023, 05:25 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763145/View 1/5
+IPv4 Addressing
+The IP address is a 32-bit number that uniquely identifies an individual device connected
+anywhere to a TCP/IP internetwork (most commonly the Internet). IP addresses are usually written
+in dotted decimal notation, e.g., 192.168.0.1, where four 8-bit numbers (decimal numbers with
+range 0-255) are separated by full-stops (dots).
+The IP address is then logically divided into two parts:
+network part: the first part (most significant bits) identifying the network the device is connected
+to
+host part: the second part (least significant bits) identifying the device on that particular network
+The division between network part and host part is used by a device to determine whether a
+destination is located on the same network (the network part is equal), referred to as the local
+network, or a destination is located on a different network (the network part is not equal), referred
+to as a remote network. The distinction between the two tells the device whether a destination can
+be reached directly through the underlying data-link network (for the local network), or to forward
+a packet to a router for delivery (to a remote network).
+Classful addressing
+IP addresses were originally allocated in what now referred to as the classful approach, where the
+first bits of the 32-bit number (or first bits of the first 8-bit number) define the class of IP address
+and, in turn, where the network part and host part are separated. Three classes of address were
+defined, as follows:
+Class
+First
+Bits
+Address
+Format
+Networks
+Addresses
+Per
+Network
+Range
+A 0 nnn.hhh.hhh.hhh 128 16,777,216 0-127
+B 10 nnn.nnn.hhh.hhh 16,384 65,536
+128-
+191
+C 110 nnn.nnn.nnn.hhh 2,097,152 256
+192-
+223
+Organisations wishing to acquire IP addresses would obtain an address range of one of the
+above classes. Regardless of the address range, two addresses are reserved:
+13/04/2023, 05:25 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763145/View 2/5
+1. where the host bits are all zeroes, specifying an address referring to the network itself (the
+network address)
+2. where the host bits are all ones, specifying an address to broadcast packets to all hosts on the
+network (the broadcast address).
+A small organisation, for example, might acquire a Class C address space, allowing them to
+connect a single network containing up to 254 hosts (256 addresses minus the network and
+broadcast reserved addresses).
+Subnetting
+Although this approach was initially adequate, it was desirable to subdivide these ranges. To
+resolve this, subnetting was introduced. Subnetting allowed a classful range to be divided into a
+number of smaller networks (subnets) by moving the boundary between network and host parts
+by using a subnet mask.
+The subnet mask is also specified using dotted decimal notation, however it consists of a
+sequence of 1-bits followed by a sequence of 0-bits. An organisation could therefore control the
+number of networks and the size of each network by changing this address.
+For example, consider the Class C network address 200.200.200.0:
+Original allocation with mask 255.255.255.0 supporting 254 hosts:
+Network 200.200.200.0;
+Subnetted into two networks with mask 255.255.255.128, each network supporting 126 hosts:
+Network 200.200.200.0; and
+Network 200.200.200.128;
+Subnetted into four networks with mask 255.255.255.192, each network supporting 62 hosts:
+Network 200.200.200.0;
+Network 200.200.200.64;
+Network 200.200.200.128; and
+Network 200.200.200.192.
+VLSM and CIDR
+This solution was later generalised by the introduction of Variable Length Subnet Masks (VLSM),
+allowing multiple (different) subnet masks to be used within one address space and providing for
+different sized subnets within one network. This ensured that IP addresses were not wasted
+needlessly, as address ranges could be adjusted for specific subnet needs.
+13/04/2023, 05:25 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763145/View 3/5
+A new notation for the subnet mask was also introduced, Classless Inter-Domain Routing (CIDR),
+allowing the subnet mask (or CIDR mask) to be specified by indicating the number of 1-bits in the
+network, e.g., /24 is equivalent to a subnet mask of 255.255.255.0. For example, an
+administrator may choose to subnet the above 200.200.200.0 network address space as follows:
+200.200.200.0/25 (subnet mask 255.255.255.128) supporting 126 hosts;
+200.200.200.128/26 (subnet mask 255.255.255.192) supporting 62 hosts;
+200.200.200.192/28 (subnet mask 255.255.255.240) supporting 14 hosts;
+200.200.200.208/29 (subnet mask 255.255.255.248) supporting 6 hosts;
+200.200.200.216/29 (subnet mask 255.255.255.248) supporting 6 hosts; and
+200.200.200.224/27 (subnet mask 255.255.255.224) remaining unallocated/unused.
+CIDR also represented the final steps in generalising the subnetting concept, by allowing both a
+network to be divided into smaller parts (subnetting), but also allowing multiple smaller networks
+to be combined together (aggregation or supernetting). CIDR masks also allowed routers to refer
+to multiple networks using only the prefix (first n bits) of the network address, enabling a reduction
+in the number of routing table entries.
+Activity
+13/04/2023, 05:25 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763145/View 4/5
+Drag the words into the correct
+boxes
+Consider an organisation
+which has been assigned
+the Class C address
+space 200.200.200.0/24.
+The organisation has two
+physical offices, each
+with their own network:
+the head office where 70
+devices are connected to
+the network, and a
+remote office where
+there are 40 devices
+connected to the
+network. The
+organisation also uses
+two other networks: they
+access the Internet via
+an ISP who provides a
+Valid
+Valid
+Invalid
+Valid
+Invalid
+Hint: If you’re stuck or aren’t clear on how the IP addressing mechanisms work,
+consider the following video which provides a good demonstration of the above
+concepts:
+IPv4 Addresses and Subnetting - CompTIA Network+ N10-…
+13/04/2023, 05:25 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763145/View 5/5
+ Previous Next 
+13/04/2023, 05:26 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763146/View 1/2
+IPv4 Address Assignment
+IP addresses can be assigned to devices either manually or automatically depending on the role a
+particular device plays in the network.
+We have seen how organisations can obtain a range of IP addresses and how they can divide
+those addresses among their networks. There are also some special ranges of IP addresses that
+may also appear in a network.
+As defined by RFC5735, these include:
+127.0.0.0/8 - block used for the loopback interface (often only 127.0.0.1) where any packets
+sent to this address are “looped back” to the sending host, i.e., the packet is processed as
+though it just arrived;
+169.254.0.0/16 - block used for “link local” addresses where devices can automatically
+configure IP addresses to communicate on the directly connected data-link layer only;
+224.0.0.0/4 - block of addresses reserved for supporting multicast delivery (originally referred to
+as Class D addresses);
+10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 - blocks of addresses reserved for private
+networks (examined later).
+Static and dynamic assignment
+Regardless of the addresses used, there are two approaches to configuring an IP address on a
+device: static assignment where an address is manually assigned by an administrator, and
+dynamic assignment, where the address is automatically assigned by a program or by the device
+itself.
+Static assignment is commonly used for fixed devices that provide service to a network, including
+network hardware such as routers and managed switches, servers such as file servers and web
+servers, and peripheral devices such as printers. These devices rarely move among networks and
+often require a fixed address to function properly.
+Static assignment is also often used by networking practitioners when setting up a lab
+environment for performing experiments, where the practitioner may manually configure a small
+number of devices, such as we will do in our studies.
+Dynamic assignment on the other hand falls into two categories. The most common that most
+people are familiar with is the DHCP protocol, which we will examine in a later week. The DHCP
+protocol allows any device to request an IP address and the DHCP server will ensure that a
+unique address is assigned to that device.
+13/04/2023, 05:26 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763146/View 2/2
+ Previous Next 
+Alternatively, hosts can automatically configure themselves by generating an address in the linklocal address space (169.254.0.0/16), most commonly seen in Windows operating systems when
+DHCP has failed.
+Assessment
+Consider a scenario where you are working for an company that is maintaining a
+medium sized network. They are using the public IP address range
+195.123.95.0/24. Using a fixed length subnet mask, they have divided the
+network into two:
+1. The user network, which occupies the higher range of numbers, where all the
+employee computers are connected.
+2. The server network, which occupies the lower range of numbers, where all the
+network services are run from.
+Both networks connect to a single router which then has a third connection to
+the Internet which uses addresses controlled by the ISP. The first usable address
+in each of the above networks is reserved for the router. The last usable address
+in the server network is used by the DNS server.
+Consider connecting an employees workstation to the user network. This
+workstation will use the first free IP address on that network. Calculate the
+following (all addresses must be indicated in dotted decimal notation):
+The IP address of the workstation;
+The subnet mask of the workstation;
+The default gateway (router IP address) for the workstation; and
+The DNS server’s IP address for the workstation.
+Using all the information above, draw a network topology diagram illustrating this
+information (including all devices and IP addresses).
+13/04/2023, 05:26 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763147/View 1/3
+Address Resolution Protocol (ARP)
+To send a packet to the next hop, the network layer must first acquire the data link layer address.
+ARP provides the functionality for this.
+As noted previously, network addresses provide us with the information we require to locate the
+destination. To actually send a packet on a directly connected network however, we require the
+data link layer address. The Address Resolution Protocol, commonly referred to as ARP, provides
+the functionality we require for this activity. Originally written for supporting Ethernet networks, the
+ARP protocol can actually work for any network which supports broadcast.
+Any device connected to an Ethernet network running the TCP/IP protocol suite will regularly
+need to determine the Ethernet address for a given IP address whether their destined for a local
+or remote network. ARP performs this task by broadcasting a request, i.e., sending a request for
+the Ethernet address to all devices connected to the network. Simplistically, the ARP request is
+asking ‘can the owner of the destination IP address please tell me their Ethernet address’?
+The device that is assigned the destination IP address responds directly to the requestor (unicast)
+to provide their Ethernet address to them. To send the response, the destination will also require
+the Ethernet address of the requestor, which they included in the request message. The actual
+message format used by the ARP protocol, for both request and response, is illustrated in the
+following figure:
+ARP protocol
+13/04/2023, 05:26 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763147/View 2/3
+ARP requests
+In the ARP request, the requesting device sets the Operation field to indicate a request and sets
+the Sender’s Hardware Address (Ethernet address) and Sender’s Protocol Address (IP address) to
+their own addresses. The Target’s Protocol Address is then set to the destination IP address,
+leaving the Target’s Hardware Address set to zero (it is unknown).
+Next, the request is sent via broadcast to all devices on the local network. Upon receiving the
+request, the destination identifies that it is the intended target from the Target’s Protocol Address,
+changes the Operation to indicate a response and copies its Ethernet address into the Target’s
+Hardware Address field. The response is then returned to the requester directly using unicast.
+Upon receiving any such ARP replies, the requesting host stores a temporary copy of the IP
+address - Ethernet address mapping in what is known as the ARP cache. This is useful because
+network communications often involve either multiple packets in one message being sent,
+messages forming part of a longer exchange between two devices, or both. Imagine, for
+example, reading/writing large files from/to a file server. Caching the mapping eliminates the need
+for repeated ARP requests in the short term.
+ARP spoofing
+Unfortunately this caching mechanism is also vulnerable to an attack known as an ARP spoofing
+or an ARP poisoning attack.
+In this attack, the attacking device sends a large number of ARP reply messages to the victim
+device in an attempt to change the IP address / Ethernet address mapping stored there. When
+successful the attacker has achieved either a denial of service by setting the mapping to a nonexistent Ethernet address, or could even achieve a Man in the Middle attack by setting the
+mapping to its own Ethernet address then reading/manipulating traffic before it is forwarding to
+the real destination.
+Reflect
+The use of ARP implies that there is always an initial delay before any IP traffic
+can be sent from one device to another. An alternative approach might be to
+have devices periodically advertise their IP and Ethernet addresses, allowing the
+ARP cache to be pre-filled. Do you think this approach would improve or reduce
+13/04/2023, 05:26 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763147/View 3/3
+ Previous Next 
+the overall performance of the network? Why do you think that the designers of
+ARP chose their approach rather than the alternative indicated here?
+References
+Plummer, D.C., An Ethernet Address Resolution Protocol – or – Converting Network Protocol Addresses,
+RFC826, 1982 (Available from https://tools.ietf.org/html/rfc826).
+13/04/2023, 05:26 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763148/View 1/3
+Internet Control Message Protocol
+IP only deals with the delivery of packets from one device to another, ignoring any errors that may
+occur. To address this, the Internet Control Message Protocol (ICMP) provides diagnostic and
+notification services at the Network Layer.
+Originally defined in RFC792, it uses IP to transport its messages and therefore sits above IP.
+ICMP is also considered to be part of the network layer, an auxiliary to IP existing in a sub-layer
+above IP. The main purpose for ICMP is to provide notifications of error states in IP delivery, but it
+also includes support for messages that can be used for diagnostic purposes.
+ICMP Types
+ICMP provides the following error and diagnostic messages types:
+Destination Unreachable - used by routers and destination devices to notify the sending
+device that packets encountered a problem reaching the destination, including sub-types:
+net unreachable - a router in the path identifies that the destination network cannot be
+reached;
+host unreachable - a router identifies that a specific device (host) cannot be reached;
+protocol unreachable - the specified protocol does not exist at the destination;
+port unreachable - the protocol exists at the destination but that port is not active (port not
+created by a process);
+fragmentation needed and DF set - a packet must be fragmented to achieve delivery but the
+Don’t Fragment flag was set on the packet by the sender;
+Echo and Echo Reply - used to send small amounts of data to a remote device (echo), which
+returns the same data in a response (echo reply);
+Parameter Problem - a router or device is unable to process an incoming datagram due to
+errors in parameters (usually related to an options field);
+Redirect - a packet received by a router for delivery is attached to the same network as the
+sender (sender should go direct, not via the router);
+Time Exceeded - a packet was discarded after the Time To Live (TTL) field reached zero or
+fragments of a packet were still missing at the end of the allowed time period;
+Timestamp and Timestamp Reply - used to measure delay between two devices by
+sending a timestamp from one device to another, which then responds including the original
+timestamp and its own timestamp;
+Ping
+13/04/2023, 05:26 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763148/View 2/3
+Other ICMP message types have existed at various stages, such as the source quench message
+and address mask request/reply messages, however these have since been deprecated. Of
+particular note among the above message types is the use of the echo and echo reply messages
+that are actually used by two tools: ping and traceroute.
+The ping tool sends an ICMP echo message to the specified destination IP address and waits for
+the destination device to respond with the ICMP echo reply message. If the ICMP echo reply is
+received within a pre-determined time limit, the ping tool usually displays the time it took to
+receive the reply (indicating the round trip time to that destination). If the ICMP echo reply is not
+received within that time limit, then the ping tool will usually display an error message indicating
+that there was no response.
+Traceroute
+The traceroute tool on the other hand applies exactly the same ICMP echo and echo reply
+messages except it also manipulates the Time to Live (TTL) field of the IP header.
+Specifically, on the first ICMP echo message the TTL is set to a value of 1. Upon reaching the first
+router, the TTL will be reduced to zero and the router will respond with an ICMP time exceeded
+message. The traceroute tool now displays the IP address of the first router, which was indicated
+by the source IP address on the time exceeded message. The traceroute tool now repeats the
+process, incrementing the TTL at each step and displaying the IP address of the nth router in the
+path until the destination device finally responds.
+Each step is often repeated twice for a total of three messages to provide an indication of
+differences in the time to respond. This approach provides an effective map of the network
+between two devices, including any delays, unless redundant pathways exist between the two
+devices, which traceroute has no ability to identify.
+Reflect
+The modern Internet uses many mechanisms that trick us. Imagine that you
+wanted to access Microsoft’s web page for their United States branch of the
+organisation, www.microsoft.com. Noting that Microsoft is located in Seattle,
+Washington, Consider the following traceroute completed on a home computer
+located in Victoria, Australia:
+C:\>tracert www.microsoft.com
+Tracing route to e13678.dspb.akamaiedge.net [23.44.37.229]
+over a maximum of 30 hops:
+13/04/2023, 05:26 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763148/View 3/3
+ Previous Next 
+1 <1 ms <1 ms <1 ms dsldevice.lan [192.168.5.254]
+2 8 ms 7 ms 7 ms lo0.bras1.mel10.on.ii.net
+[150.101.32.127]
+3 18 ms 19 ms 18 ms 150.101.35.161
+4 18 ms 19 ms 18 ms be180.cr2.adl6.on.ii.net
+[150.101.40.184]
+5 18 ms 17 ms 18 ms be18.cr2.adl4.on.ii.net
+[150.101.40.193]
+6 18 ms 18 ms 18 ms a23-44-37-
+229.deploy.static.akamaitechnologies.com [23.44.37.229]
+Trace complete.
+C:\>
+Considering that it takes approximately 165ms for data to travel from Melbourne
+to the US and back, what has happened here? Have the above echo messages
+travelled between Melbourne and the United States? Have the above echo
+messages travelled between this computer and Microsoft?
+References
+Postel, J., Internet Control Message Protocol: DARPA Internet Program Protocol Specification, RFC792, 1981
+(Available from https://tools.ietf.org/html/rfc792).
+13/04/2023, 05:26 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763149/View 1/3
+Problems with IPv4
+Although IPv4 has served the Internet well, it has been apparent since the 1980s that the pool of
+addresses would eventually be exhausted. As a 32-bit number, the IPv4 address defines slightly
+under 4.3 billion possible addresses. The number of addresses available to be assigned to
+devices is reduced however by the reserving of addresses for various purposes including network
+addresses, broadcast addresses, and various special addresses and ranges, e.g., the loopback
+address and private network ranges.
+IPv4 Address Allocations
+A common misconception regarding the shortage of addresses is that it is caused by addresses
+being used. This is inaccurate, as many of the addresses are not in use, or could be freed up by
+replacing them with private addresses (see below).
+IPv4 addresses are distributed by first allocating blocks of addresses to Regional Internet
+Registries, e.g., the Asia Pacific Network Information Centre (APNIC). These are then allocated
+out to smaller registries, ISPs, companies, and even individuals, who then use individual
+addresses on an as needed basis. Organisations such as Apple, Ford, HP, and IBM were
+historically allocated a Class A address space which they still maintain. It is unlikely that these
+organisations have the 16 million or so devices connected to the public Internet to actually use all
+of those IP addresses, and some have even chosen to return some of their allocations for
+reassignment to other parties.
+Information regarding what IP address ranges have been assigned to different registries and
+organisations can be seen on the IANA’s IPv4 Address Space Registry page. When illustrated
+graphically, as of June 2018 the picture of allocated versus available IP addresses is as follows:
+13/04/2023, 05:26 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763149/View 2/3
+IPv4 address space registry
+Each coloured box in the above table represents the first decimal number of an IPv4 address,
+with each line containing 10 such numbers. The first line represents numbers 0-9, the second line
+10-19, and so on (the prefix is shown on the left of the row and the last digit at the top of the
+column). The black reserved addresses are for various purposes, such as the loopback address
+space (127), addresses reserved for multicast (224-239), and those reserved for experimental use
+(240-255).
+The problem
+If you review the table closely, you will note that there are no gaps in the coloured blocks,
+indicating that all IP addresses are either allocated or reserved. This highlights the problem with
+IPv4: there are no more free blocks to allocate.
+13/04/2023, 05:26 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763149/View 3/3
+ Previous Next 
+The only possibility of additional addresses can be seen in the reserved blocks at the bottom of
+the table, which were reserved for experimental use. The use of this range of addresses is not
+well supported by some operating systems and routers however, and would only defer the
+problem for a short period of time, so this range has not been used. As of today, all of the regional
+registries have either exhausted their allocations, or can only allocate addresses on a severely
+restricted basis.
+The solution: IPv6
+The solution to this problem is the deployment of IPv6, however this is a relatively slow and
+ongoing process. To help reduce the immediate need for addresses, the following interim
+solutions have been deployed:
+Classless Inter-Domain Routing (CIDR) – replacing classful IP address allocation and allowing
+networks be divided unequally, allowing different sized IP address allocations for different sized
+networks;
+Private IP address spaces – ranges of addresses reserved for use on private LANs that may be
+connected to the Internet (10.0.0.0/8, 172.16.0.0-172.31.0.0/16, and 192.168.0.0-
+192.168.255.0/24);
+Network Address Translation – allows networks using private IP address spaces to be
+connected to the Internet requiring a much smaller number of public IP addresses (often one
+address); and
+Other minor improvements, such as allowing subnets numbers with all 0s / all 1s (in binary) to
+be used.
+Reflect
+Consider the above discussion noting how a number of organisations were
+allocated Class A address spaces. Do you think that these organisations should
+be forced to return parts of their allocations to the Internet? Do you think this
+would resolve the problem with the lack of available addresses? What problems
+do you think might be encountered taking this action?
+13/04/2023, 05:29 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763151/View 1/3
+IPv6 addressing
+IPv6 solves the problem of addressing in IPv4, doubling the address space 96 times!
+IPv6 represents a significant change for the Internet, replacing the IPv4 protocol that has been
+used for years for moving data between devices located anywhere in the world. The primary
+motivation for IPv6 is to resolve the shortage of IP addresses inherent with IPv4’s 32-bit address
+as examined previously.
+IPv6 uses a 128-bit IP address, increasing the number of possible addresses from 4,294,967,296
+to 340,282,366,920,938,463,463,374,607,431,768,211,456 : a somewhat larger number!
+To provide some perspective on this number, if you were to divide the number of IPv6 addresses
+equally across the surface of the planet, then there would be approximately
+667,000,000,000,000,000,000,000 addresses for every square metre!
+IPv6 notation
+The notation for an IP address, or how we write the address, has changed in the move to IPv6. If
+the same dotted decimal notation were used as for IPv4, then rather than four decimal numbers
+separated by full-stops, there would be 16 decimal numbers. To reduce the burden in this,
+decimal numbers (0-9) are replaced with hexadecimal numbers (0-f), and two bytes are indicated
+together (0000-ffff), resulting in eight four digit hexadecimal numbers separated by a colon (:),
+e.g., FE80:0000:0000:0000:0000:0000:0000:0001. This still represents a very long address, so
+two additional mechanisms were introduced to allow it to be reduced further:
+1. any preceding zeroes can be dropped in exactly the same way as as decimal numbers, e.g.,
+‘000a’ can be written as just ‘a’.
+2. any one sequence of zero values can be shortened by replacing the entire sequence with a
+double colon (::).
+Given these changes, the above example IPv6 address shortens to just FE80::1. Note however
+that only one sequence of zeroes can be shortened according to the second rule, therefore the
+IPv6 address FE80:0:0:0:1:0:0:1 could be shortened to either FE80::1:0:0:1 or FE80:0:0:0:1::1,
+but not FE80::1::1
+Beyond the address notation, the concepts we learned for IPv4 remain much the same. For
+example, the IP address is still divided into network and host parts, and the dividing mark is also
+indicated by the use of a subnet mask written using CIDR notation (usually /64 rather than at a
+variable location). Many of the special addresses and ranges remain, although obviously their
+13/04/2023, 05:29 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763151/View 2/3
+numbers are changed, e.g., the loopback address is now the much simpler ::1, and link local
+addresses are in the range FE80::/10.
+IPv6 Header
+The IPv6 header has also been simplified to improve processing, illustrated as follows:
+IPv6 header
+There are two obvious differences, the much larger 128-bit addresses and the change of the
+version number to v6. The most significant change is the removal of the options field, replaced
+with zero or more extension headers that can follow the IP header.
+Extension headers effectively work as another protocol encapsulated inside the datagram, e.g.,
+an IPsec header in tunnel mode, and can replace any functionality implemented with options in
+IPv4. Fragmentation of datagrams is then handled by an extension header, resulting in those fields
+being eliminated. The removal of the options field though also results in a fixed size IP header,
+which can speed processing of packets and eliminates the need for the header length field (IHL)
+used in IPv4.
+13/04/2023, 05:29 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763151/View 3/3
+ Previous Next 
+A Flow Label has also been introduced to allow a sequence of related traffic to be identified. The
+purpose of this field was poorly defined in the original specification and has therefore varied since,
+and most IPv6 packets today leave this field unused (zero value).
+In early days the field was suggested as a means to improve the speed of switching packets to
+their destination, forming the predecessor to MPLS. More recently, applications have been
+proposed for using the flow label for Quality of Service purposes, for load balancing applications,
+or even security purposes (see RFC6294).
+Other changes are relatively minor, including renaming the Protocol field to the Next Header field
+(as the next header in the packet may be an extension header), and the Time to Live field being
+simplified to a hop count (no longer measured in seconds).
+Reflect
+Reviewing the original classful approach to allocating IPv4 addresses, one could
+easily conclude that the original approach was wasteful and caused the problem
+of a lack of available addresses we face today. At the time however, the
+challenges faced were much simpler (such as can we get two computers to
+exchange data?), and the suggestion of running out of addresses would
+probably have seemed foolish.
+Today, most home users can request an IPv6 address space from their ISP, and
+will usually be granted a /64 address space for their home network. This means
+if your home network can potentially support up to
+18,446,744,073,709,551,616 public IPv6 addresses to support your computers,
+phones, televisions, and so on, exceeding the capacity of all IPv4 public IP
+addresses squared!
+Do you think this represents a waste of IPv6 addresses, in the same was as IPv4
+addresses were wasted? Do you think that we are using up the IPv6 address
+space with the same naivety as we did the IPv4 address space?
+13/04/2023, 05:29 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763152/View 1/3
+IPv6 Address Assignment
+Similar to IPv4, IPv6 addresses can be assigned both statically and dynamically, however there
+are new methods available:
+Static addressing
+SLAAC
+SLAAC with stateless DHCPv6
+Stateful DHCPv6
+Of the above possibilities, static addressing and stateful DHCPv6 are equivalent to the static and
+dynamic approaches we saw in IPv4. The remaining three however require explanation.
+Stateless Address Autoconfiguration (SLAAC)
+SLAAC describes a method through which an IPv6-capable device generates its own IPv6
+address, i.e., there is no address configured by the administrator or by a DHCP server. Instead,
+the router connected to the network provides the IPv6 network prefix (usually the first 64 bits or
+network part of the address), and then the device generates the host part (the remaining 64 bits).
+Once the device has generated its own address, it then checks with the other devices connected
+to the network to ensure that its IPv6 address is unique.
+Key support for SLAAC is found in the updated ICMPv6 protocol, which defines several important
+message types and also performs functions previously undertaken by ARP:
+Router Solicitation (RS) - the device broadcasts this message type to request a router
+advertisement from any router connected to the network;
+Router Advertisement (RA) - the router responds with this message type to indicate the IPv6
+network prefix;
+Neighbor Solicitation (NS) - equivalent to the ARP request, broadcast by the device to test if
+any other devices are using the generated IPv6 address; and
+Neighbor Advertisement (NA) - equivalent to the ARP response, used by other devices on
+the network to respond to the neighbor solicitation if they are using the generated IPv6 address
+already.
+Using these message types, a device attempting to generate its own IPv6 address will first
+broadcast an RS message to request the network prefix, which is returned by the router in an RA
+message. The host completes the address by generating the remaining 64 bits of the IPv6
+address, then broadcasts an NS to check if any other devices are already using that address. If
+13/04/2023, 05:29 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763152/View 2/3
+another device is using that address, they will return an NA message, and the device can
+regenerate the host part and try again.
+Devices often generate the 64-bit host part of the IPv6 address using the EUI-64 method which
+maps the device’s Ethernet address (48-bit address) to the required 64-bits. The EUI-64 bit
+mapping is a straightforward two step process:
+1. Recall from our study of Ethernet that the second bit of the OUI in an Ethernet address
+indicates whether the address is locally or globally administered. Under EUI-64, this bit is first
+toggled to indicate a global address; and
+2. The resulting Ethernet address is divided equally into two 24-bit values, and the 16 bit
+sequence 1111111111111110 (FFFE in hex) is inserted into the middle 16 bits, forming a 64-bit
+sequence.
+Stateless DHCPv6
+Although the elimination of the dependence on a central server may seem an ideal outcome of
+the SLAAC approach, SLAAC also doesn’t permit the configuration of as many other network
+parameters as the IPv4 DHCP solution. To solve this problem, stateless DHCPv6 can be provide
+supplemental configuration. In this solution, the device will generate it’s own IPv6 address using
+SLAAC as described above, but it will then contact a DHCPv6 server and request the additional
+network configuration, e.g., the domain name (deakin.edu.au), name servers (DNS service,
+examined in a later week), and so on. The difference between this approach and the IPv4 DHCP
+solution is that the server does not need to maintain a pool of addresses for dynamic allocation or
+keep track of which addresses are used by which devices on the network.
+Reflect
+The processes described above for SLAAC seem very robust, allowing a device
+to quickly generate its own addresses without requiring a DHCP server. The use
+of the EUI-64 method for mapping the device’s Ethernet address to the host part
+of the IPv6 address also seems straightforward and reasonable. Interestingly
+however, Microsoft does not use EUI-64, instead using a randomly generated 64
+bit pattern for the host part. The reason given for this change is that moving from
+network to network under IPv4 you would not be identifiable, but with EUI-64 it
+would become possible to track you regardless of which network you connected
+to.
+13/04/2023, 05:29 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763152/View 3/3
+ Previous Next 
+How would this be possible? Do you think this is a reasonable precaution or an
+unnecessary, paranoid approach?
+13/04/2023, 05:29 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763153/View 1/3
+Implementing IPv6
+Moving from IPv4 to IPv6 is considered an inevitable step to the continued growth of the Internet.
+Given the lack of interoperability between them however, the problem is how to replace IPv4 with
+IPv6.
+Moving from IPv4 to IPv6 is somewhat problematic given that it is not possible for IPv4 to
+exchange data with IPv6. Today’s Internet can be accessed in its entirety using IPv4, however
+IPv6 has limited reach. This means that there is limited motivation for those using IPv4 to
+transition to IPv6, and often barriers such as hardware or software that aren’t capable of
+implementing IPv6 and needing upgrade or replacement. Instead, a strategy needs to be
+developed to transition all IPv4 devices and networks to IPv6.
+Flag Day
+A Flag Day represents an approach where a particular moment in time where everyone will
+complete the required changeover. For example, we could declare that in two or three years from
+now, when the clock reaches midnight marking the end of December 31st and beginning of
+January 1st, that we will switch from IPv4 to IPv6. The problem however is that time is different
+depending on your location in the world. Whilst it might be midnight in Melbourne or Sydney, it
+would be 11:30pm in Adelaide, 11pm in Queensland, 10:30pm in the Northern Territory, and 9pm
+in Western Australia. On the opposite side of the world, such as in Britain, the time would be 1pm
+on the afternoon of December 31st, meaning the changeover would be likely to occur in the
+middle of a regular business day. It’s generally accepted that declaring a flag day is not feasible.
+Dual Stack
+Dual stack is relatively straightforward and the most common approach taken so far. Recall that
+we have been learning how protocols are arranged into layer, for example with Ethernet at the
+bottom layers, then IPv4, then TCP or UDP. We can also describe this arrangement as a stack of
+protocols, which leads us to understanding the dual stack approach:
+Dual stack
+13/04/2023, 05:29 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763153/View 2/3
+As illustrated, a computer running dual stack will implement both the IPv4 and IPv6 protocols.
+Above each IP protocol appears any transport protocols (matching versions of TCP and UDP
+illustrated), and the Ethernet layer is shared between them. Applications can then choose to use
+either stack, able to continue accessing network services available over IPv4 whilst also
+accessing and providing services through IPv6.
+The problem with dual stack occurs when the IPv6 packets being routed through the Internet
+encounter a link in the path which does not support IPv6. There is no way for IPv6 to resolve this
+problem, and the datagram cannot proceed further and must be discarded.
+Tunnelling
+Tunnelling solves the problem identified for dual stack, allowing IPv6 datagrams to travel over an
+IPv4 network, as follows:
+IPv4 tunnelling
+Tunnels are a relatively simple concept, where the tunnel is setup between two fixed locations, in
+this case the IPv4 endpoints on the routers:
+1. The tunnel then forms a logical link over which data can be passed, in this case the tunnel
+carries the IPv6 datagrams.
+2. As a result, IPv6 datagrams arriving at one of the routers adjacent to the IPv4 network will
+encapsulate the IPv6 datagram inside an IPv4 datagram.
+3. This is then transported to the remote router (via the tunnel), where the IPv6 datagram is then
+decapsulated from the IPv4 datagrams and can continue through on the IPv6 network.
+NAT
+Two approaches using NAT have been developed. The first, NAT-PT, is similar to Network
+Address Translation mentioned earlier, except the actual protocol is translated from IPv6 to IPv4
+(and vice-versa) as it moves through the NAT-PT gateway. NAT-PT is now deprecated and should
+not be used.
+NAT64 is an alternative approach which is currently supported, which provides a mechanism to
+allow IPv6-only devices to communicate with IPv4 servers. For this purpose, when the IPv6
+13/04/2023, 05:29 Welcome
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6763153/View 3/3
+ Previous Next 
+device wants to communicate with an IPv4 server, the IPv4 address is used as the host address
+in the IPv6 prefix 64:ff9b::/96.
+For example, if an IPv6 host wishes to communicate with the IP address 100.150.200.250 (in hex
+6496c8fa), it would use a destination IPv6 address of 64:ff9b::6496::c8fa. When the IPv6 reached
+the router connecting to the IPv4 part of the network, the payload is transferred to an IPv4
+datagram using the embedded destination address and a selected public IPv4 address for the
+source address (same as NAT for home users).
+NAT64 also supports other configurations for communicating between IPv4 and IPv6 networks,
+such as the ability for IPv6-only servers to provide service to IPv4-only networks and devices.
+Other Approaches
+Several other approaches have been developed to support transitioning from IPv4 to IPv6, a good
+summary of which is provided on Wikipedia’s page.
+Reflect
+We have clearly described the problems of IPv4 running out of addresses, how
+IPv6 solves this problem, and transition strategies that are being used to move
+to IPv6. Unfortunately, the world is very slow to begin to support IPv6, and
+dropping support for IPv4 seems to be a very long way away. For perspective,
+consider the ongoing worldwide survey being conducted by APNIC, the
+Regional Internet Registry for the Asia Pacific region (including Australia).
+Does it surprise you how poorly IPv6 is deployed? Did you find any surprising
+outcomes in the survey data? Have you considered deploying IPv6 in your home
+networks? Does your phone network use IPv6? Should they?
+13/04/2023, 05:30 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768475/View 1/2
+Forwarding and Routing
+The two most critical functions provided by the Network Layer (TCP/IP Internet Layer) are
+forwarding and routing. These two concepts are closely related, and often referred to
+interchangeably. Simplistically, routing is the task of identifying the path between two devices
+(across one or more networks), while forwarding is the task of moving the packet along that path.
+In Module 2 we learned how two devices can be connected together to exchange data (a single
+network/link). In an internetwork, special purposes devices known as routers are used to connect
+the various networks/links together. Each router will be connected to two or more networks. For
+example, most home routers are connected to three networks: Ethernet, Wi-Fi, and a WAN port
+(connection to the ISP). Routers in the Internet’s core may be connected to many networks.
+Forwarding
+The role of forwarding is implemented by these routers, most commonly using a technique known
+as store and forward. In this technique, a packet arrives on one of the interfaces connecting the
+router to a network and is stored in memory (the ‘store’ in store and forward). The router will then
+analyse the information in the packet, and compare the destination address in the packet with a
+pre-configured forwarding table, which tells the router which network interface the packet needs to
+be sent on, and the router then retransmits the packet on that interface (the ‘forward’ in store and
+forward).
+Routing
+The role of routing is to determine the optimal paths for packets to take as they pass through the
+internetwork. This can be done manually by an administrator, known as static routing, or can be
+done by programs running on the routers, known as dynamic routing. The result of the routing
+task is the configuring (or reconfiguring) of the table referred to by the forwarding function
+described above.
+Reflect
+Take a few minutes to consider the challenges faced by the forwarding and
+routing functions.
+Begin by considering the task of routing, which must determine the path
+between any two devices and which networks need to be traversed to get there.
+There are many redundant or alternative pathways in the Internet. How many
+13/04/2023, 05:30 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768475/View 2/2
+ Previous Next 
+networks and pathways do you think exist in this problem space? Consider how
+many networks you can identify. Most homes will have two or three networks:
+Ethernet, Wi-Fi, and the ISP connection. These homes then connect through to
+a connection point for the ISP, often through third party networks such as the
+NBN, and both the ISP and NBN usually have redundancy built into their
+connections to address scalability, reliability, and availability concerns. There are
+then multiple links between cities and multiple links between countries. How
+many different ways do you think there are to transfer traffic from your computer
+to your favourite web search, shopping, or social media web sites? How would
+you identify the best path for your packets?
+You’ll quickly see that routing is a significant challenge, as the problem space
+must consider all of the networks and their connections in the world. Forwarding
+on the other hand you would expect to be much simpler. The problem space for
+forwarding is only relevant to an individual device. A router in a home network
+would only have a handful of routing table entries reflecting those networks. But
+what about in the Internet’s core? As mentioned earlier in this module, the BGP
+dynamic routing protocol is responsible for distributing this information and we
+can actually see how many routing table entries are required for the Internet by
+querying BGP. This web site provides a report into the size of the BGP routing
+information for IPv4, and also for IPv6 (see link at the top of the page for IPv6
+information). Does it surprise you just how many networks are listed in the
+Internet’s routing tables? What are the implications of this number of routes for
+the speed of the Internet? Why do you think the IPv6 routing table is so much
+smaller?
+13/04/2023, 05:30 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768476/View 1/3
+The Routing Table
+In the same way as terminology is often used loosely when discussing forwarding and routing, the
+same can be observed when discussing the tables used. The term routing table is most
+commonly used generically to refer to a table that contains the information used by a router’s
+forwarding function, which we also use here. A review of routing however will generally reveal that
+there are two tables, two versions, or two views of the routing information. The first, and most
+apparent, is the table already discussed containing the optimal routes to all relevant destinations
+that is used by the forwarding function.
+There is often a second however, containing additional information including alternate pathways,
+various metrics for calculating the optimal pathways, and so on. For example, in considering
+OSPF we will learn that all of the information about an internetwork is collected into what is
+known as the topology table, which is then used to populate the routing table.
+The routing table contains information about known networks and how to reach them, usually
+specifying the network address, subnet mask, and how packets should be forwarded to reach
+that destination device, which could be either the outgoing interface and/or the IP address of the
+next hop to forward the packet to. A default route is also often included to identify where to send
+packets when the destination network is not known.
+An Example Routing Table
+Below is an example of a IPv4 routing table taken from a Windows computer:
+01: IPv4 Route Table
+02:
+======================================================================
+=====
+03: Active Routes:
+04: Network Destination Netmask Gateway
+Interface Metric
+05: 0.0.0.0 0.0.0.0 192.168.1.254
+192.168.1.1 25
+06: 127.0.0.0 255.0.0.0 On-link
+127.0.0.1 331
+07: 127.0.0.1 255.255.255.255 On-link
+127.0.0.1 331
+08: 127.255.255.255 255.255.255.255 On-link
+127.0.0.1 331
+13/04/2023, 05:30 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768476/View 2/3
+Initially this routing table may seem to be complex and confusing, however it’s actually a relatively
+simple routing table. For context, this computer has a single Ethernet card configured with the IP
+address 192.168.1.1/24. Focus initially on the Interface column, which indicates the network
+interface that should be used to forward a packet. The lines which indicate the assigned IP
+address of 192.168.1.1 are therefore indicating that the packet should be forwarded via the
+Ethernet card, whereas those lines indicating 127.0.0.1 are indicating the loopback interface
+should be used.
+On Line 9, we can see that the routing table indicates that all addresses on the 192.168.1.0/24
+network can be reached through the Ethernet card, which can be reached by performing an
+ARP to obtain their Ethernet address and then sending via the data-link layer.
+Line 10 indicates that anything to our assigned IP address should also be resolved through the
+Ethernet card (acting like another loopback),
+Line 11 indicates the broadcast address for that network is also forwarded through the
+Ethernet card. Matching entries for the loopback interface can be seen on Lines 2-4.
+Lines 6-8 are equivalent to Lines 9-11 except for the loopback interface and IP address.
+Lines 14-15 are a special address for broadcasting to all destinations, which must be sent out
+all interfaces, which is why two entries appear for the same destination network and mask.
+Lines 12-13 represent the multicast range of addresses which have the range 224.0.0.0-
+239.255.255.255. IP multicast is outside the scope of our studies, but multicast messages
+must be delivered to all destinations that are part of a multicast group, which could exist on any
+interface, which for routing is effectively the same as broadcast.
+09: 192.168.1.0 255.255.255.0 On-link
+192.168.1.1 281
+10: 192.168.1.1 255.255.255.255 On-link
+192.168.1.1 281
+11: 192.168.1.255 255.255.255.255 On-link
+192.168.1.1 281
+12: 224.0.0.0 240.0.0.0 On-link
+127.0.0.1 331
+13: 224.0.0.0 240.0.0.0 On-link
+192.168.1.1 281
+14: 255.255.255.255 255.255.255.255 On-link
+127.0.0.1 331
+15: 255.255.255.255 255.255.255.255 On-link
+192.168.1.1 281
+16:
+======================================================================
+=====
+13/04/2023, 05:30 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768476/View 3/3
+ Previous Next 
+Finally, we only have one line left, Line 5, which represents the default route. Note how the
+previous lines we examined all indicated the gateway as “on-link”, meaning that the destination
+can be reached directly through the interface, whereas Line 1 instead indicates the IP address of
+a gateway (the router) where packets should be sent to.
+We mentioned above that this routing table was relatively simple, which is because there is only
+one network connection. The routing table therefore only contains entries for the Ethernet network
+plus special cases including the loopback network, multicast, and broadcast addresses. The
+routing tables in the core pathways of the Internet contain many more routing table entries,
+including routes for not only connected networks, but many others, so that datagrams can be
+routed to and from any location around the world. The size of routing tables is in fact a challenge
+in such networks, finding a way to minimise their size and ensure their size remains controlled in
+the face of changing networks and locations.
+Activity
+The routing table shown above resulted from a computer with a single Ethernet
+connection with IP address 192.168.1.1/24 and a default gateway of
+192.168.1.254. Consider adding an additional Ethernet connection with the IP
+address of 10.0.0.1/20 (no default gateway). Can you determine the additional
+five rows that would be added to the routing table by this connection?
+13/04/2023, 05:31 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768477/View 1/4
+The Forwarding Process
+Both versions of the Internet Protocol (both v4 and v6) forward packets by examining the
+destination address and comparing this with the information contained in the routing table.
+Consider the following network topology:
+Two interconnected routers each with two networks
+In the above topology, there are two routers, each of which has two networks, resulting in four
+networks:
+On the router on the left:
+192.168.0.0/24; and
+192.168.1.0/24.
+On the router on the right:
+192.168.2.0/24; and
+192.168.3.0/24.
+There is then a fifth network connecting the two routers together: 10.0.0.0/30.
+Consider the following routing table, taken from a Cisco branded router, for the router on the left:
+01: Codes: L - local, C - connected, S - static, R - RIP, M - mobile,
+B - BGP
+02: D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter
+area
+03: N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external
+type 2
+13/04/2023, 05:31 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768477/View 2/4
+The table begins with a legend/key indicating what the letters down the left hand side of the
+bottom part of the table mean (lines 1-7). The table then indicates a Gateway of last resort (line 9),
+which is an alternative name for a default route (the matching route can be seen on line 21).
+Finally we see the entries for the actual routing table.
+There are four different types of entries shown in the table, based on the code indicated in the first
+character:
+C (lines 12, 16, and 19) - these entries indicate the network address for the network that is
+attached on the indicated interface;
+L (lines 13, 17, and 20) - these entries indicate the IP addresses referring to the local host, i.e.,
+an IP address configured on that interface;
+S (lines 14 and 21) - these entries indicate routes that have been configured by an administrator
+(static routes);
+The remaining entries (no code indicated on lines 11, 15, and 18) are the classful addresses
+relevant to the configured networks.
+If you review the routing table entries carefully, you’ll notice that the entries overlap. In particular,
+consider the network addresses indicated on lines 14, 16, and 19:
+192.168.0.0/22 - includes all IP addresses from 192.168.0.0-192.168.3.255;
+04: E1 - OSPF external type 1, E2 - OSPF external type 2, E -
+EGP
+05: i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - ISIS inter area
+06: * - candidate default, U - per-user static route, o - ODR
+07: P - periodic downloaded static route
+08:
+09: Gateway of last resort is 10.0.0.2 to network 0.0.0.0
+10:
+11: 10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+12: C 10.0.0.0/30 is directly connected, GigabitEthernet0/0
+13: L 10.0.0.1/32 is directly connected, GigabitEthernet0/0
+14: S 192.168.0.0/22 [1/0] via 10.0.0.2
+15: 192.168.0.0/24 is variably subnetted, 2 subnets, 2 masks
+16: C 192.168.0.0/24 is directly connected, GigabitEthernet0/1
+17: L 192.168.0.1/32 is directly connected, GigabitEthernet0/1
+18: 192.168.1.0/24 is variably subnetted, 2 subnets, 2 masks
+19: C 192.168.1.0/24 is directly connected, GigabitEthernet0/2
+20: L 192.168.1.1/32 is directly connected, GigabitEthernet0/2
+21: S* 0.0.0.0/0 [1/0] via 10.0.0.2
+13/04/2023, 05:31 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768477/View 3/4
+192.168.0.0/24 - includes all IP addresses from 192.168.0.0-192.168.0.255; and
+192.168.1.0/24 - includes all IP addresses from 192.168.1.0-192.168.1.255.
+At first glance, this may appear to be an error, however it’s necessary to understand how the
+routing table is used. Entries in the routing table are matched by identifying those entries that
+match the destination address, then selecting the entry with the longest prefix length, e.g., an
+entry with a prefix length of /24 will be used in preference to an entry with a prefix length of /16.
+Given this approach, if a packet arrives that is destined for IP address 192.168.1.111, then it will
+match two of these routes:
+1. 192.168.0.0/22
+2. 192.168.1.0/24
+The second of these has the longest prefix length and will be selected, i.e., the packet with
+destination IP 192.168.1.111 will be sent out the GigabitEthernet0/2 interface.
+On the other hand, if a packet arrives that is destined for IP address 192.168.2.222, it will only
+match one of these routes:
+1. 192.168.0.0/22
+The routing table entry tells the router this packet needs to be forwarded to the router at IP
+address 10.0.0.2, which is the router on the right (which connects to the network 192.168.2.0
+and will deliver the packet).
+Notice how the same pattern repeats for the gateway of last resort (the default route), which
+appears on line 21. The prefix length here is /0, and so this route will in fact match every possible
+destination IP address. That route will only ever be used however if there are no other matching
+entries.
+Assessment
+Consider the routing table shown in the article above. Your task is to modify this
+table so that it matches the router on the right (using a text editor/word
+processor, you don’t need to access a Cisco router). When you are updating this
+table, assume that the default route should be set to the IP address
+192.168.3.254.
+13/04/2023, 05:31 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768477/View 4/4
+ Previous Next 
+References
+If you are interested in learning more about how the routing table works in Cisco devices in particular, the
+following references provide a useful starting point:
+Cisco, 2013. Local Host Routes Installed in the Routing Table on Cisco IOS and Cisco
+IOS-XR, July 10. Available from https://www.cisco.com/c/en/us/support/docs/ip/ip-rout‐
+ing/116264-technote-ios-00.html (Accessed: March 2023).
+Cisco Press, 2014. Introduction to Routing Dynamically, in Routing Protocols Companion
+Guide, Section 3.5, February 24. Available from https://www.ciscopress.com/articles/ar‐
+ticle.asp?p=2180210&seqNum=12 (Accessed: March 2023).
+13/04/2023, 05:31 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768877/View 1/2
+Configuring the Routing Table
+We have now examined the purpose of the routing table and how it is used by the forwarding
+function to move packets towards their destination. How the routing table is configured is in many
+respects even more important, as it is critical that the routing tables installed in the different
+routers in the network agree on the paths packets should take. If there is disagreement, packets
+may end up traversing a non-optimal path, or worse still a path that loops in the network,
+resulting in the IPv4 TTL/IPv6 Hop Count reducing to a zero value and the packet being
+discarded.
+There are two approaches involved: static routing and dynamic routing. Static routing involves the
+administrator manually configuring a route, typically using a command line interface. Recalling the
+static route shown for a Cisco router in our previous example:
+S 192.168.0.0/22 [1/0] via 10.0.0.2
+This above route is configured with the command:
+Router(config)# ip route 192.168.0.0 255.255.252.0 10.0.0.2
+The above line shows the command prompt on the routers interface (Router(config)#), the
+command (ip route), the network address and subnet mask in dotted decimal notation
+(192.168.0.0 255.255.252.0) and the IP address of the router to forward the packet to
+(10.0.0.2). Other variations of this command are also possible (including IPv6 variants).
+Alternatively, dynamic routing involves configuring one or more protocols (dynamic routing
+protocols) which enables the routers to communicate with each other to determine the
+connectivity of the network. Simplistically, each router is connected to a number of networks and
+is able to determine their status, such as whether they are active, the speed they are capable of,
+and so on. The routers can then send a message on each connected network to discover other
+routers that are configured with the same dynamic routing protocol, and after establishing
+communication can exchange information about the networks they are connected to, learning
+about the networks accessible through the alternate router in the process.
+Reflect
+It is not uncommon for people learning about networks to be confused about
+the relationship between static and dynamic routing. A common misconception
+is that if dynamic routing is possible, why do we need static routing? It is
+certainly the case that if you are dealing with a network with some complexity
+13/04/2023, 05:31 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768877/View 2/2
+ Previous Next 
+including redundant pathways that dynamic routing is important - it allows the
+network to use an alternate pathway when the other fails.
+Although the benefits of dynamic routing are generally apparent, it is not a
+perfect solution. Before proceeding, take some time to consider why static
+routing would still be needed. In particular, consider that (1) static routing can still
+work if dynamic routing fails, and (2) static routing can be used to override the
+paths determined by dynamic routing. How would you apply static routing in a
+complex network?
+13/04/2023, 05:31 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768878/View 1/2
+Static Routing
+While less flexible than dynamic routing, static routing has numerous benefits over dynamic
+routing. Static routing has limited application in a large and complex network due to the
+requirement to manually adjust the routing in the network every time there is a topology change.
+Clearly this approach is not suitable in isolation in large networks where temporary failures and
+regular changes in usage patterns, which are better suited to dynamic routing approaches. Static
+routing has the advantage however of providing precise control over the traffic routing and flow,
+whilst being less resource intensive (routing algorithms add computation, memory, and network
+overheads). Static routing is best used in small to medium sized LANs whose topologies rarely
+change, or for special cases in larger networks where dynamic routing is used.
+Dynamic routing, addressed in the next article, provides the ability to learn what networks are
+available and how to reach them. The application of static routes in a dynamically routed network
+often falls into two categories: overriding what may be learned by dynamic routes and providing a
+backup route for when dynamic routing fails.
+Overriding Dynamic Routes
+Dynamic routing works by identifying costs for each link in the network, and where there are
+alternative paths to choose from, dynamic routing will select the path with the minimum cost.
+Although this is usually the desired behaviour, this can sometimes result in an imbalance in
+network load due to all traffic being routed through the least cost pathways. Similarly, there may
+be cases where it is desirable for some traffic not to be routed through certain pathways, e.g.,
+traffic that is sensitive to delay or traffic carrying sensitive data. Static routing allows an
+administrator to override the dynamic routing decisions in these circumstances.
+Backup Routes
+Backup routes, often referred to as floating static routes, allow the network administrator to specify
+a route to be used only when there is no dynamic route available. Floating static routes are used
+to define routes that become active when existing routes have failed or are not available for some
+reason.
+Consider, for example, an organisation which requires uninterrupted connectivity to a branch
+office. Most of the time connectivity is achieved using an encrypted site-to-site VPN running over
+the organisations Internet connection, however this experiences outages from time to time. To
+provide connectivity to the branch office when the Internet connection fails, the organisation has
+also purchased a separate backup connection, however this involves high cost when in use.
+Using floating static routes, the organisation can configure the router to automatically activate the
+13/04/2023, 05:31 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768878/View 2/2
+ Previous Next 
+backup connection when the Internet connection fails, routing traffic on the backup connection,
+then automatically deactivating the backup connection when the Internet connection returns to
+service.
+Reflect
+Driving in a car on the road network is remarkably similar to routing packets
+through a network. In this analogy, roads represent the individual network links
+and the intersections represent locations where network links connect to a
+router.
+Consider returning home from a driving holiday where you have been using a
+GPS to help map your way home. Can you give examples where you might
+override the GPS or where you might have to use a backup route? Why would
+you choose to make these changes?
+13/04/2023, 05:31 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768879/View 1/3
+Dynamic routing
+Dynamic routing allows a network to learn about what connections are available and to determine
+the optimal pathways through to all available destinations - even in the presence of failures.
+Previously we’ve only considered static routing, where an administrator must manually configure
+every router with the information about remote networks and the optimal path to get there.
+Although static routing provides better control, the approach is not scalable and programmatic
+solutions are required.
+Consider a simple scenario of an organisation that has 10 routers and 10 networks. Each router
+would be connected to at least two networks (routers connect networks together), for which an IP
+address would be configured, and would then require up to 8 routes configured on them to reach
+the other networks. For these relatively small numbers, the administrator would have had to
+configure at least 20 IP addresses (10 routers x two networks) and up to 80 routes (10 routers x 8
+routes). All of this configuration must be done correctly and consistently, any errors could cause
+some of the network to be unusable.
+Whilst there are tricks that allow this number to be reduced, such as summary routes (beyond the
+scope of our studies), 10 networks is actually quite a small number. At Deakin University for
+example, we have four main campuses (Burwood, Geelong, Warrnambool, and Waterfront), each
+of which has multiple buildings with separate networks, multiple lab spaces, multiple Faculties
+each with multiple Schools, multiple divisions, and both wired and wireless networks on these
+campuses. Clearly, in a network of this size it is not feasible to manage the routing using only a
+static approach.
+Automating the process
+Dynamic routing begins with the foundation principle that a router is already aware of the
+networks it is connected to - these networks must have been configured when the router was
+installed. Each router can then talk on its connected networks to discover other routers, then
+exchange information about the networks they are connected to with each other. Once all routers
+in the TCP/IP internetwork participate in this communication, a complete picture of the network
+can be constructed, with each router knowing about the other networks and how to reach them.
+Given knowledge of the networks, dynamic routing protocols can also then handle failures in the
+network by adjusting the chosen pathways to route traffic around those failures. Compared with
+static routing however, dynamic routing protocols require network bandwidth to communicate
+with other routers, memory in the router to store information about the available networks, and
+CPU time to calculate the best pathways available.
+13/04/2023, 05:31 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768879/View 2/3
+Identifying Preferred Routes
+Critical to the operation of dynamic routing protocols is the association of a cost factor with every
+pathway, referred to as a metric. Consider a simple scenario where two routers share two
+Ethernet connections with each other, as follows:
+Dynamic routing
+In this scenario, given a choice between the two links, it seems obvious that the preferred link
+would be the 1Gbps Ethernet link as the rate at which data can be delivered to the alternate
+router is significantly higher. This is the case if you identify the cost to be inversely proportional to
+the speed of the link, i.e., the slower the link the higher the cost. However what if the 1Gbps link
+was at full capacity but the 100Mbps link was not being used? What if the 1Gbps link was
+unreliable, corrupting packets? Each routing protocol therefore includes a definition of one or
+more costs for each possible pathway, and dynamic routing then becomes a case of identifying
+the lowest cost.
+Reflect
+Today there are many applications for GPS systems that allow us to find our way
+from one location to another via our road systems. Modern GPS systems often
+incorporate information about traffic conditions, roadworks, and even the
+presence of speed cameras. If the route you are travelling along suddenly
+experiences congestion or an accident, modern GPS systems will often offer to
+change your route to a faster option. All of this is very similar to the dynamic
+routing we are already familiar with.
+Consider this video which explains how Google Maps obtains traffic data. What
+kind of information do you see here that is analogous to computer networks?
+How could computer networks gather this information? Would it be useful for
+computer networks to change selected pathways based on this kind of
+information being captured?
+13/04/2023, 05:31 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768879/View 3/3
+ Previous Next 
+13/04/2023, 05:31 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768880/View 1/2
+Routing Information Protocol
+Two of the most popular dynamic routing protocols over the years are the RIP and OSPF
+protocols. Besides being open standards, these protocols also demonstrate different approaches
+to solving the routing problem.
+There are many routing protocols that have been developed over the years, including RIP, OSPF,
+IGRP, EIGRP, and IS-IS. Each of these routing protocols fall into a category known as Interior
+Gateway Protocols (IGPs), which are responsible for determining the paths network traffic will take
+inside an autonomous system. An autonomous system (AS) refers to a collection of networks that
+are managed by a single entity. For example, the networks on Deakin’s various campuses form an
+AS that is managed entirely by Deakin. This is separate to the AS that is used and managed at
+Monash University, the Australian National University’s AS, or the Massachusetts Institute of
+Technologies’ (MIT) AS.
+The alternative to an IGP is an Exterior Gateway Protocol (EGP), which is responsible for
+determining the traffic paths between autonomous systems. Only one such EGP is in use today,
+Border Gateway Protocol, which we examine in detail next.
+In looking closer at IGPs, there are fundamentally two different types: distance-vector protocols
+and link-state protocols. These types of protocols differ in the kind of information exchanged
+between routers and how they compute the best pathways to remote networks.
+Distance Vector Protocols and RIP
+Distance-vector protocols, such as the RIP routing protocol, work by the routers exchanging a
+distance-vector, which is effectively a table containing the networks the router knows about and
+the cost to reach that network. Any time a router receives a distance vector containing an entry
+either for an unknown network, or a known network with a lower cost, the router updates its own
+table identifying the new or improved route.
+The key advantage of the distance-vector approach is its simplicity. However, it’s important to
+recognise that each router can only update its knowledge of networks based on the routers it is
+directly connected to (neighbour routers). If a router’s neighbours have out of date information, so
+too must the router receiving that information. This is sometimes described as the routing in a
+distance-vector protocol being based on second-hand information.
+For measuring cost, the RIP routing protocol uses the hop count, i.e., the number of links a
+packet must traverse to reach its destination. Whilst this may seem reasonable, it’s also the
+greatest problem with RIP. For example, consider choosing between alternate paths between two
+routers. One pathway consists of a single link running at 10Mbps. The alternate pathway consists
+13/04/2023, 05:31 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768880/View 2/2
+ Previous Next 
+of two or more links running at 40Gbps. Under RIP, the 10Mbps link will always be chosen
+because only one hop is required, whereas the alternate pathway requires two or more hops.
+As a result of the above problems, among others, the RIP routing protocol has fallen out of favour
+over the years and is now rarely used.
+Reflect
+RIP suffers from a number of problems that we did not discuss above. One such
+problem is the count-to-infinity problem. To explain this problem briefly, consider
+a router (A) which has the only link to network (X).
+Router (A) includes this network in its update to router (B) which records that it
+can reach network (X) through router (A) in two hops. Unfortunately, router (A)
+loses the link to network (X), but notices that router (B) can get to network (X) in
+two hops, so it updates its record to indicate that it can reach network (X)
+through router (B) in three hops. Router (B) then notices that router (A) requires
+three hops to reach network (X), so it updates its routing table to indicate
+network (X) can now be reached via router (A) in four hops. The above process
+continues until the number of hops reaches infinity, which RIP conveniently
+defines to have a values of 15, i.e., 15 hops is considered unreachable.
+What do you think are the implications of defining infinity in this manner? Does
+OSPF suffer from problems like this? Why or why not?
+Note: There are solutions to the count-to-infinity problem described above,
+however they are not relevant to this activity.
+13/04/2023, 05:31 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768881/View 1/2
+Open Shortest Path First
+Open Shortest Path First (OSPF) is a link-state routing protocol which represents a fundamentally
+different approach to distance vector protocols. The key to understanding link-state protocols can
+be found in their name: identifying the state of a link.
+Link-state algorithms work by routers sending short messages containing the state of the links
+they are connected to, potentially including such information as whether the link up or down, the
+network address of the link, what speed the link is, how busy the link is, what data loss the link is
+experiencing, and so on.
+When another router receives this information, it will immediately forward this information to other
+routers it is connected, unmodified, then it will process the information in the message. The result
+of this approach is that every router in the network receives information about the state of every
+link in the network from the routers that are connected to those links. In other words, each router
+is able to quickly build a complete picture of the current state of the network. The router then
+uses this information to calculate the best paths to every other network.
+The OSPF Algorithm
+The OSPF algorithm is the most popular example of a link-state algorithm. OSPF enabled routers
+share link-state information in what is known as Link-State Advertisements (LSAs). Each router
+then stores the information they receive in these LSAs in what is referred to as the Link-State
+Database (LSDB). The database essentially a graph of the entire network topology indicating all
+routers, links, and their associated metric. Unlike RIP, the metric used for OSPF is based on the
+speed of a link - the higher the link speed, the lower the cost for that link.
+OSPF then determines the best routes to each destination by using Dijkstra’s Algorithm, often
+referred to the shortest path algorithm. The algorithm is quite complex on initial reading so we
+don’t repeat it here, however fundamentally each router creates a tree of the best paths to all
+networks as follows:
+1. The tree begins with the router itself as the root.
+2. The costs to reach all directly connected routers are calculated, whilst the cost to reach all
+other routers are assumed to be infinite.
+3. Locate the router (R) with the least cost path, that is not already in the tree, and add it to the
+tree at the appropriate connection point.
+4. For every other router (S) that router R can reach, that is not already in the tree, check to see if
+the path to S through R is lower, and if so update the least cost and pathway to router S.
+5. Repeat from Step 3 until there are no more routers not in the tree.
+13/04/2023, 05:31 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768881/View 2/2
+ Previous Next 
+Note that all routers gather the same information about the network, build the same graph of the
+network, and independently execute the same algorithm. The result of this is that all routers agree
+on the best pathway for all packets through the network, and therefore all packets follow an
+optimal path through the network.
+Multi-Area OSPF
+The problem with the above approach for OSPF however, is that as the network to grows the
+computational problem represented by this algorithm also grows. To make matters worse, the
+larger the network the more likely a fault will occur changing the topology (at least temporarily),
+requiring this algorithm to be executed even more often.
+To resolve this problem, OSPF supports dividing a network into a basic two-level hierarchy in
+what is known as multi-area OSPF (the initial discussion above can also be referred to as singlearea OSPF). In multi-area OSPF, a logical section of the network (an area), such as a building or a
+campus consisting of multiple networks, can be isolated for routing calculations. These areas are
+then connected together through a common area representing the backbone of the network
+(referred to as area 0). Topology changes within the non-backbone part of the network only cause
+shortest path recalculations within their area, and then a summary route is distributed to the
+backbone and other areas (the summary doesn’t change regardless of topology changes within
+the area).
+Reflect
+To understand OSPF, consider configuring OSPF as the administrator of
+Deakin’s network. At the time of writing, Deakin consists of four primary
+campuses: Waurn Ponds, Warrnambool, Burwood, and Waterfront. We also
+maintain separate offices in Werribee and the Melbourne CBD, and have recently
+announced the planned establishment of a new campus in Gujarat, India.
+Consider applying OSPF across this network. Would you use single-area OSPF
+or multi-area OSPF? If you use multi-area OSPF, what areas would you allocate
+areas to? If there were a change in the network, what parts of the network would
+need to be notified of the link state change and recalculate the optimal
+pathways?
+13/04/2023, 05:32 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768882/View 1/3
+BGP
+As noted previously, only one Exterior Gateway Protocol (EGP) is in use on the Internet today: the
+Border Gateway Protocol (BGP). BGP is a very complex protocol and so here we are only
+presenting the basics so that you understand its role in the Internet and networking more
+generally.
+BGP is so critical to the operation of the Internet that it is often referred to as the “glue” holding
+the Internet together in some form. This is somewhat true, BGP views the Internet as a collection
+of autonomous systems (AS’s) that are interconnected according to some kind of (partial) mesh
+topology. BGP is then responsible for determining the optimal pathways for packets to travel from
+one AS, e.g., your ISP’s AS, to any other, e.g., Google’s AS.
+Under BGP, routers are considered either gateway routers, which provide connectivity to adjacent
+AS’s, or internal routers, which exist inside a single AS. There are then two variations of the BGP
+protocol itself that work on these devices. There is Exterior Border Gateway Protocol (eBGP), which
+is responsible for determining paths between AS’s, and there is the Interior Border Gateway
+Protocol (iBGP), which is responsible for determining paths within the AS.
+This may seem counter-intuitive to begin with. You may be wondering at this point that if BGP is
+responsible for determining how traffic should travel between AS’s, why does it also determine
+paths within the AS? Isn’t that the job of an Interior Gateway Protocol (IGP) such as OSPF?
+Perhaps surprisingly, the answer to both questions is yes. The reason for this is that BGP also
+incorporates support for redundant connections for traffic to travel from one AS to another.
+Connection Redundancy
+BGP supports four different four different redundancy patterns in a network. The first of these,
+single homed, is probably the most natural or the most familiar to you, as this is what you would
+see in most homes. In particular, a single homed AS represents a network with a single
+connection to an ISP. In most homes, you would have a central router which has a single
+connection to your ISP via Fibre-to-the-Node (FTTN) or Fibre-to-the-Premises (FTTP) broadband
+connections. Alternatively, you may be tethered to a mobile device with a cellular connection (4G,
+5G, etc.)
+The second pattern is known as a dual homed network, where to eliminate the ISP connection as
+a single point of failure, a second connection is established to the ISP. We can now start to
+understand the purpose of the iBGP protocol. Traffic that needs to travel to another network can
+begin at any node inside the AS, and then needs to travel to a gateway router for transport to the
+remote AS. The iBGP protocol informs the routers in the AS of the address of that gateway router,
+13/04/2023, 05:32 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768882/View 2/3
+and then the IGP protocol such as OSPF is what actually tells the routers the best pathway inside
+the AS to get to that gateway router. If that ISP connection goes down, iBGP detects this and
+informs the routers to use the address of the alternate ISP connection instead.
+In the preceding paragraph, we identified that we can eliminate the ISP connection as a single
+point of failure, however there is also a second single point of failure in this picture: the ISP
+themselves. Having multiple connections to an ISP does not provide reliable transport to other
+ISPs (and therefore the broader Internet) if the ISP becomes non-functional for some reason. It
+therefore makes sense to introduce redundancy into the ISP themselves. This results in a new
+type of pattern, multi-homed, which is in fact combined with the first two we already discussed:
+Single multi-homed: where the network has a single connection to two or more ISPs.
+Dual multi-homed: where the network has two connections to two or more ISPs.
+We can now see that BGP supports adding redundancy to ensure outgoing traffic will be able to
+travel to remote AS’s.
+Incoming Connectivity
+Most of the time, when we send data on the Internet we are expecting a response. For example,
+when you connect to a web server and request a web page (request sent from local AS to remote
+AS), you generally expect that the web page will be returned (response returned from remote AS
+to local AS). We have discussed how iBGP can compensate for the loss of a pathway to an
+external ISP by routing traffic to a different gateway router, however the traffic that is being
+returned in response also needs to enter the local AS via a different gateway router. This is where
+eBGP enters the picture, responsible for communicating pathways between AS’s.
+Reflect
+Consider how you might travel from home to Deakin or to your workplace. There
+are multiple paths you could take - you could walk, ride, drive, use various
+ridesharing/ridehailing services, or use public transport. Each of these options
+may also have built in alternatives, you could select different streets or use
+different modes of public transport, each of which have different features or
+capabilities. What kind of factors would you consider in selecting one of the
+many alternatives for travelling to Deakin or your workplace and are any of these
+analogous to how a network works?
+13/04/2023, 05:32 Forwarding and Routing
+https://d2l.deakin.edu.au/d2l/le/content/1317234/viewContent/6768882/View 3/3
+ Previous Next .
+</p> 
+<!-- <p>
 <a href="https://www.amazon.com/Age-Surveillance-Capitalism-Future-Frontier/dp/1610395697" target="_blank">Shoshana Zuboff’s work on Surveillance Capitalism</a> tries to prove that these technological power
 houses initially enter the scene as providers of convenience and private experience. They portray
 their services as the inevitable outgrowth of technology. However, in the background, not easily
@@ -174,7 +1676,7 @@ possibilities are endless especially when the purpose of the surveillance is not
 tracking programs can easily outlast their intended use. Governments should therefore not
 approve any of these cellphone tracking technologies until they have careful put up policies that
 will see to it that human rights are not violated in the process
-<p>
+<p> -->
 </div>
 
 <div>
