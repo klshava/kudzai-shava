@@ -1,87 +1,200 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kudzai Lawrence Shava</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #333;
+      line-height: 1.6;
+    }
 
-<html>
-	<head>
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-179573739-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    header {
+      background: #f5f5f5;
+      padding: 60px 20px;
+      text-align: center;
+    }
 
-  gtag('config', 'UA-179573739-1');
-</script>
-		<title>Kudzai Lawrence Shava</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
 
+    header p {
+      font-size: 1.2rem;
+      color: #666;
+    }
 
-	<body class="is-preload">
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
 
-		<!-- Nav -->
-			<nav id="nav">
-				<ul class="container">
-					<li><a href="index.html">Home</a></li>
-					<!-- <li><a href="blog.html">Blog</a></li> -->
-					<li><a href="photographs.html" >Snaps</a></li>
-					<li><a href="projects.html">Projects</a></li>
-					<li><a href="curriculum.html">CV</a></li>
-				</ul>
-			</nav>
+    nav a {
+      text-decoration: none;
+      color: #0072ce;
+      font-weight: 600;
+    }
 
-		<!-- Home -->
-			<article id="top" class="wrapper style4">
-				<div class="container">
-					<div class="row">
-						<div class="col-4 col-5-large col-12-medium">
-							<span class="image fit"><img src="images/2.jpg" alt="" /></span>
-						</div>
-						<div class="col-8 col-7-large col-12-medium">
-							<header>
-								<p><h1>Howdy?!</h1></p> 
-								<div></div>
-								<h1>I'm <strong>Kudzai Lawrence Shava</strong>.</h1>
-							</header>
-							<p> I'm a Masters in Data Science candidate at Deakin University <strong>!</strong><p>
-							<p> Despite an Electrical Engineering background, I've experience working in Business Intelligence and Data Analysis</p>
-							<p>I am very passionate about all things tech! Very big on self development and improvement. Lets be better humans!  </p>
-							<p>Sometimes I take <a href="photographs.html" >pictures</a>, most of the times its some cool <a href="projects.html">project</a>  </p>
-							<a href="curriculum.html" class="button large scrolly">Learn about what I do</a>
-						</div>
-					</div>
-				</div>
+    section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
 
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #0072ce;
+      display: inline-block;
+    }
 
+    .project {
+      margin-bottom: 30px;
+    }
 
-	
+    .project-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
 
-		<div>
-					<footer>
-						<ul>
-							|<a href="https://www.linkedin.com/in/kudzailawrenceshava/" target="_blank"  class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a>
-							|<a href="https://za.pinterest.com/Kudzai_Lawrence_Shava/" target="_blank" class="icon brands fab fa-pinterest-square"><span class="label">Pinterest</span></a>
-							|<a href="https://github.com/klshava"  target="_blank"  class="icon brands fa-github"><span class="label">Github</span></a>
-							|<a href="https://www.instagram.com/kudzai_lawrence/" target="_blank"  class="icon brands fa-instagram"><span class="label">Instagram</span></a>
-							|<a href="https://www.youtube.com/channel/UCMhZpY00LXS8sm9jaJtB13A" target="_blank" class="icon brands fa-youtube"><span class="label">YouTube</span></a>
-							|<a href="https://medium.com/@KudzaiShava" target="_blank" class="icon brands fab fa-medium"><span class="label">Medium</span></a>
-						|</ul>
-						<ul class="copyright">
-							<centre>&copy; Kudzai Lawrence Shava 2022</centre>
-							<img src="https://grabify.link/VAZCBG" width = "0px" height= "0px">
-							
-						</ul>
-					</footer>
-		</div>
-			</article>
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 15px;
+    }
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-	</body>
+    .skill-item {
+      background-color: #f0f0f0;
+      padding: 10px;
+      text-align: center;
+      border-radius: 5px;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #fafafa;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .socials a {
+      margin: 0 10px;
+      color: #0072ce;
+      font-size: 1.4rem;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: 2px solid #0072ce;
+      color: #0072ce;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #0072ce;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Kudzai Lawrence Shava</h1>
+    <p>Data Science Professional · Machine Learning Enthusiast · Problem Solver</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <p>
+      I’m a data science professional with experience delivering analytics and business intelligence solutions across logistics, healthcare, insurance, and marketing sectors. My work bridges data analysis, engineering, and applied science to generate measurable business impact.
+    </p>
+    <p>
+      I have a strong interest in machine learning and artificial intelligence — not just as tools, but as transformative technologies for solving real-world problems. Whether it's building predictive models or designing intuitive dashboards, I enjoy creating data-driven systems that make sense of complexity.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Recent Projects</h2>
+
+    <div class="project">
+      <div class="project-title">Logistics Cost Tracking Dashboard</div>
+      <p>Built a Power BI dashboard for a national transport company, improving visibility over freight costs and delivery performance.</p>
+    </div>
+
+    <div class="project">
+      <div class="project-title">Fraud Pattern Detection (Python)</div>
+      <p>Developed a machine learning model to flag unusual customer transactions based on historical behavioral trends using Random Forest.</p>
+    </div>
+
+    <div class="project">
+      <div class="project-title">COVID Impact Visualisation</div>
+      <p>Created a Tableau dashboard mapping COVID-19 case trends across states, integrated with government mobility data for correlation analysis.</p>
+    </div>
+
+    <!-- Add more as needed -->
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills & Tools</h2>
+    <div class="skills-grid">
+      <div class="skill-item">Python</div>
+      <div class="skill-item">SQL</div>
+      <div class="skill-item">Power BI</div>
+      <div class="skill-item">Tableau</div>
+      <div class="skill-item">Excel</div>
+      <div class="skill-item">R</div>
+      <div class="skill-item">Machine Learning</div>
+      <div class="skill-item">Artificial Intelligence</div>
+      <div class="skill-item">Data Wrangling</div>
+      <div class="skill-item">DAX</div>
+      <div class="skill-item">Git</div>
+      <div class="skill-item">AWS (Basics)</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <p>Let’s connect. I'm open to collaboration, data-driven challenges, or a conversation about emerging technologies. Reach me via the platforms below or <a href="mailto:klshava97@gmail.com">send an email</a>.</p>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/kudzailawrenceshava/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/klshava" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://medium.com/@KudzaiShava" target="_blank"><i class="fab fa-medium"></i></a>
+    </div>
+    <a href="curriculum.html" class="btn">View My Resume</a>
+  </section>
+
+  <footer>
+    &copy; 2025 Kudzai Lawrence Shava · Melbourne, Australia
+  </footer>
+
+</body>
 </html>
