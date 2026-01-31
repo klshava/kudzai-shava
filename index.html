@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>King Lawrence</title>
+  <title>KingLawrence</title>
 
  <!-- Favicon for tab/browser -->
  <link rel="icon" type="image/x-icon" href="images/logo.ico">
@@ -20,7 +20,14 @@
   <!-- Header / Navigation -->
   <header class="header">
     <div class="container nav-container">
-      <a href="#hero" class="logo">King<span>Lawrence</span></a>
+
+      <a href="#hero" class="logo">
+        <span class="logo-text">
+          <span class="king">King </span><span class="lawrence"> Lawrence </span><span class="dot"> .</span>
+        </span>
+      </a>
+      
+     <!-- <a href="#hero" class="logo"> King<span>Lawrence</span><span>.</span></a> --> 
       <nav class="nav" id="nav">
         <a href="#services">Services</a>
         <a href="#work">Work</a>
@@ -175,50 +182,77 @@
           Tell us a bit about your brand, your challenges, and what success looks like.
           We’ll come back within 1 business day.
         </p>
-        <ul class="contact-meta">
-          <li>Email: hello@youragency.com</li>
+     <!--≈ <ul class="contact-meta">
+          <li>Email: </li>
           <li>Based in: Remote / Your City</li>
-        </ul>
+        </ul>-->
       </div>
-      <form class="contact-form" name="contact" netlify>
-        <div class="field-group">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" required />
-        </div>
-        <div class="field-group">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required />
-        </div>
-        <div class="field-group">
-          <label for="company">Company</label>
-          <input id="company" name="company" type="text" />
-        </div>
-        <div class="field-group">
-          <label for="budget">Approx. monthly budget</label>
-          <select id="budget" name="budget">
-            <option value="">Select</option>
-            <option value="<5k">&lt; $5k</option>
-            <option value="5-15k">$5k–$15k</option>
-            <option value="15-50k">$15k–$50k</option>
-            <option value="50k+">$50k+</option>
-          </select>
-        </div>
-        <div class="field-group">
-          <label for="message">What do you need help with?</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-full">Submit enquiry</button>
-      </form>
+
+
+      <form class="contact-form" id="contact-form">
+  <div class="field-group">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" required />
+  </div>
+  <div class="field-group">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required />
+  </div>
+  <div class="field-group">
+    <label for="company">Company</label>
+    <input id="company" name="company" type="text" />
+  </div>
+  <div class="field-group">
+    <label for="budget">Approx. monthly budget</label>
+    <select id="budget" name="budget">
+      <option value="">Select</option>
+      <option value="<5k">&lt; $5k</option>
+      <option value="5-15k">$5k–$15k</option>
+      <option value="15-50k">$15k–$50k</option>
+      <option value="50k+">$50k+</option>
+    </select>
+  </div>
+  <div class="field-group">
+    <label for="message">What do you need help with?</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-full">Submit enquiry</button>
+</form>
+
+
+
+
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="container footer-layout">
-      <p>© <span id="year"></span> Your Agency Name. All rights reserved.</p>
+      <p>© <span id="year"></span> KingLawrence. All rights reserved.</p>
       <p>Strategy • Creative • Media • Technology</p>
     </div>
   </footer>
+
+  <!-- EmailJS scripts - ADD THIS BEFORE </body> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+  emailjs.init("RdgUhFYv_bBg5-PDq");  <!-- Your Public Key -->
+</script>
+<script>
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    emailjs.sendForm('service_ztggmx9', 'template_a382035', this)
+      .then(function(response) {
+        alert('🎉 Thanks! Your message has been sent.');
+        document.getElementById('contact-form').reset();
+      }, function(error) {
+        alert('❌ Send failed. Try again or email directly.');
+        console.log('ERROR:', error);
+      });
+  });
+</script>
+
 
 </body>
 </html>

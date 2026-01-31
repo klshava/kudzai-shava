@@ -522,5 +522,47 @@
     .about-stats {
       grid-template-columns: 1fr;
     }
+
+  }
+
+  /* IT STARTED HERE */
+
+ /* Text logo - FIXED spacing */
+.logo .logo-text {
+    display: inline-flex;
+    align-items: baseline;
+    font-weight: 700 !important;
+    font-size: 1.2rem;
+    line-height: 1.1;
+    letter-spacing: -0.015em;  /* Perfect tight spacing, no overlap */
+  }
+  
+  .logo .king {
+    color: #ffffff !important;
+  }
+  
+  .logo .lawrence {
+    color: #ff4c60 !important;
+    /* No negative margin */
+  }
+  
+  .logo .dot {
+    color: #ffffff !important;
+    font-size: 1.35em;     /* Nice dot size */
+    line-height: 0.9;      /* Perfect baseline alignment */
+    margin-left: 0.02em;   /* Tiny positive space - NO OVERLAP */
+  }
+  
+  /* Hover */
+  .logo:hover .logo-text {
+    transform: scale(1.05);
+  }
+  
+  /* Mobile */
+  @media (max-width: 720px) {
+    .logo .logo-text {
+      font-size: 1.1rem;
+      letter-spacing: -0.01em;
+    }
   }
   
