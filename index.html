@@ -1,60 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Static Shop Example</title>
-<style>
-  body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f7f7f7; }
-  h1 { text-align: center; }
-  .products { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-  .product { background: #fff; padding: 15px; border-radius: 8px; width: 200px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
-  .product img { max-width: 100%; border-radius: 5px; }
-  .cart-link { position: fixed; top: 20px; right: 20px; background: #0070ba; color: #fff; padding: 10px 15px; border-radius: 5px; text-decoration: none; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Agency Name</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <script defer src="js/main.js"></script>
 </head>
 <body>
 
-<h1>My Static Shop</h1>
+  <!-- Header / Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="#hero" class="logo">Your<span>Agency</span></a>
+      <nav class="nav" id="nav">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="btn btn-small">Let’s talk</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-<a class="cart-link" href="cart.html">Go to Cart (<span id="cart-count">0</span>)</a>
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h1>We turn data into bold digital experiences.</h1>
+        <p>
+          A full‑service digital agency helping brands grow with creative,
+          media, and technology that actually moves the needle.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn">Book a strategy call</a>
+          <a href="#work" class="link">View case studies</a>
+        </div>
+        <div class="hero-meta">
+          <span>Data‑driven. Creative‑led.</span>
+          <span>Remote‑first, working globally.</span>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="hero-tag">Featured project</div>
+        <div class="hero-card">
+          <h3>Brand X Streaming</h3>
+          <p>+120% uplift in engagement, 35% lower CPA in 90 days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="products" id="products"></div>
+  <!-- Services -->
+  <section id="services" class="section section-light">
+    <div class="container">
+      <h2 class="section-title">What we do</h2>
+      <p class="section-intro">
+        Strategy, creative, media, and technology working together to deliver measurable impact.
+      </p>
+      <div class="grid services-grid">
+        <article class="card">
+          <h3>Digital Strategy</h3>
+          <p>Audience, positioning, and full‑funnel planning grounded in data, not guesswork.</p>
+          <ul>
+            <li>Audience & journey mapping</li>
+            <li>Brand & comms strategy</li>
+            <li>Measurement frameworks</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Performance Media</h3>
+          <p>Paid media across search, social, and programmatic with ruthless optimization.</p>
+          <ul>
+            <li>Paid search & shopping</li>
+            <li>Paid social & video</li>
+            <li>Programmatic & display</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Creative & Content</h3>
+          <p>Platform‑native creative to stop the scroll and drive response.</p>
+          <ul>
+            <li>Campaign & content production</li>
+            <li>Motion & short‑form video</li>
+            <li>Always‑on optimisation</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Data & Technology</h3>
+          <p>Tracking, dashboards, and automation for smarter decisions.</p>
+          <ul>
+            <li>Analytics & tagging</li>
+            <li>Dashboards & reporting</li>
+            <li>Marketing automation</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<script>
-const products = [
-  { id: 1, name: "Red Mug", price: 15.00, img: "https://via.placeholder.com/150/FF0000/FFFFFF?text=Red+Mug" },
-  { id: 2, name: "Blue T-Shirt", price: 25.00, img: "https://via.placeholder.com/150/0000FF/FFFFFF?text=Blue+T-Shirt" },
-  { id: 3, name: "Green Notebook", price: 10.00, img: "https://via.placeholder.com/150/00FF00/FFFFFF?text=Green+Notebook" }
-];
+  <!-- Case studies -->
+  <section id="work" class="section">
+    <div class="container">
+      <h2 class="section-title">Selected work</h2>
+      <div class="grid work-grid">
+        <article class="work-card">
+          <span class="work-tag">Streaming</span>
+          <h3>Brand X – “Watch More”</h3>
+          <p>Multi‑channel campaign driving app installs and viewing time with a data‑driven creative system.</p>
+          <p class="work-metric">+120% engagement • −35% CPA</p>
+        </article>
+        <article class="work-card">
+          <span class="work-tag">Fintech</span>
+          <h3>NovaPay – Launch</h3>
+          <p>Full‑funnel digital launch for a new fintech brand across paid search, social, and content.</p>
+          <p class="work-metric">3x sign‑ups vs target</p>
+        </article>
+        <article class="work-card">
+          <span class="work-tag">Retail</span>
+          <h3>UrbanWear – Always‑on</h3>
+          <p>Always‑on performance engine for e‑commerce across Meta and Google Shopping.</p>
+          <p class="work-metric">+48% ROAS in 6 months</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-// Initialize cart from localStorage
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  <!-- About -->
+  <section id="about" class="section section-dark">
+    <div class="container about-grid">
+      <div>
+        <h2 class="section-title">Who we are</h2>
+        <p>
+          We’re a hybrid team of strategists, creatives, analysts, and engineers who believe
+          the best work happens when data and storytelling collide.
+        </p>
+        <p>
+          No bloated retainers or siloed teams – just small, senior squads focused on outcomes.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <span class="stat-number">20+</span>
+          <span class="stat-label">brands partnered</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">5</span>
+          <span class="stat-label">markets served</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">3x</span>
+          <span class="stat-label">avg. ROAS uplift</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-const productsDiv = document.getElementById('products');
-const cartCount = document.getElementById('cart-count');
-cartCount.textContent = cart.length;
+  <!-- Contact -->
+  <section id="contact" class="section section-light">
+    <div class="container contact-grid">
+      <div>
+        <h2 class="section-title">Let’s build something</h2>
+        <p>
+          Tell us a bit about your brand, your challenges, and what success looks like.
+          We’ll come back within 1 business day.
+        </p>
+        <ul class="contact-meta">
+          <li>Email: hello@youragency.com</li>
+          <li>Based in: Remote / Your City</li>
+        </ul>
+      </div>
+      <form class="contact-form" name="contact" netlify>
+        <div class="field-group">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required />
+        </div>
+        <div class="field-group">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div class="field-group">
+          <label for="company">Company</label>
+          <input id="company" name="company" type="text" />
+        </div>
+        <div class="field-group">
+          <label for="budget">Approx. monthly budget</label>
+          <select id="budget" name="budget">
+            <option value="">Select</option>
+            <option value="<5k">&lt; $5k</option>
+            <option value="5-15k">$5k–$15k</option>
+            <option value="15-50k">$15k–$50k</option>
+            <option value="50k+">$50k+</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="message">What do you need help with?</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-full">Submit enquiry</button>
+      </form>
+    </div>
+  </section>
 
-// Render products
-products.forEach(p => {
-  const div = document.createElement('div');
-  div.className = 'product';
-  div.innerHTML = `
-    <img src="${p.img}" alt="${p.name}">
-    <h3>${p.name}</h3>
-    <p>$${p.price.toFixed(2)}</p>
-    <button onclick="addToCart(${p.id})">Add to Cart</button>
-  `;
-  productsDiv.appendChild(div);
-});
-
-function addToCart(productId) {
-  const product = products.find(p => p.id === productId);
-  cart.push(product);
-  localStorage.setItem('cart', JSON.stringify(cart));
-  cartCount.textContent = cart.length;
-}
-</script>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-layout">
+      <p>© <span id="year"></span> Your Agency Name. All rights reserved.</p>
+      <p>Strategy • Creative • Media • Technology</p>
+    </div>
+  </footer>
 
 </body>
 </html>
