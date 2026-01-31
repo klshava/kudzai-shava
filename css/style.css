@@ -565,4 +565,121 @@
       letter-spacing: -0.01em;
     }
   }
+
+  
+  /* VIDEO BACKGROUND */
+  /* Hero VIDEO background */
+.hero-video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;  /* Perfect cover like background-size: cover */
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 5, 9, 0.65);  /* Dark tint for text readability */
+    z-index: 2;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 3;
+  }
+  
+  /* Mobile: pause video, show static bg */
+  @media (max-width: 768px) {
+    .hero-video {
+      display: none;
+    }
+    
+    .hero {
+      background: radial-gradient(circle at top left, #181a20, #050509 55%);
+    }
+  }
+
+  
+  /* SECOND VIDEO */
+
+  /* Work+About VIDEO background */
+.section-work-stories {
+    position: relative;
+    padding: 6rem 0 4rem;  /* Slightly less bottom padding */
+    min-height: 140vh;     /* Tall enough for both sections */
+  }
+  
+  .section-video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .section-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+  }
+  
+  .section-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 5, 9, 0.75);  /* Darker overlay */
+    z-index: 2;
+  }
+  
+  /* Content positioning */
+  .section-header,
+  .work-grid,
+  .about-grid-wrapper {
+    position: relative;
+    z-index: 3;
+  }
+  
+  .about-grid-wrapper {
+    padding-top: 4rem;
+    border-top: 1px solid rgba(255,255,255,0.1);  /* Visual separator */
+  }
+  
+  /* Mobile: hide video */
+  @media (max-width: 768px) {
+    .section-video {
+      display: none;
+    }
+    
+    .section-work-stories {
+      background: linear-gradient(145deg, var(--bg-alt), var(--bg));
+    }
+  }
   
