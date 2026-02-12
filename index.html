@@ -28,12 +28,12 @@
       </a>
       
      <!-- <a href="#hero" class="logo"> King<span>Lawrence</span><span>.</span></a> --> 
-      <nav class="nav" id="nav">
-        <a href="#services">Services</a>
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="btn btn-small">Let’s talk</a>
-      </nav>
+     <nav class="nav" id="nav">
+      <a href="#services">Services</a>
+      <a href="#work-stories">Work</a>     <!-- Changed from #work -->
+      <a href="#about">About</a>   <!-- Changed from #about -->
+      <a href="#contact" class="btn btn-small">Let’s talk</a>
+    </nav>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
@@ -90,20 +90,40 @@
       <p>A full‑service digital agency helping brands grow with creative, media, and technology that actually moves the needle.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn">Book a strategy call</a>
-        <a href="#work" class="link">View case studies</a>
+        <a href="#work-stories" class="link">View case studies</a>
       </div>
       <div class="hero-meta">
         <span>Data‑driven. Creative‑led.</span>
         <span>Remote‑first, working globally.</span>
       </div>
     </div>
-    <div class="hero-media">
+    
+   <!--   <div class="hero-media">
       <div class="hero-tag">Featured project</div>
       <div class="hero-card">
         <h3>Brand X Streaming</h3>
         <p>+120% uplift in engagement, 35% lower CPA in 90 days.</p>
       </div>
+    </div> --> 
+    
+    <div class="hero-card">
+      <div class="metric-stack">
+        <div class="metric-item">
+          <span class="metric-counter" data-target="120">0</span>%
+          <span>Engagement ↑</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-counter" data-target="-35">0</span>%
+          <span>CPA ↓</span>
+        </div>
+      </div>
+      <h3>Brand X Streaming</h3>
+      <p>+120% engagement, 35% lower CPA</p>
     </div>
+    
+    
+
+
   </div>
 </section>
 
@@ -247,7 +267,7 @@
   
   <!-- About content -->
   <div class="container about-grid-wrapper">
-    <div class="about-grid">
+    <div class="about-grid"  id="about" >
       <div>
         <h2 class="section-title">Who we are</h2>
         <p>We’re a hybrid team of strategists, creatives, analysts, and engineers who believe the best work happens when data and storytelling collide.</p>
